@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ali Hassan — Frontend Engineer</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --accent:#00e5a0;
+  --accent2:#0af;
+  --dark:#0a0c10;
+  --dark2:#12151c;
+  --dark3:#1a1f2b;
+  --text:#e8ecf4;
+  --muted:#8892a4;
+  --border:rgba(255,255,255,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+h1,h2,h3,h4,.brand{font-family:'Syne',sans-serif;}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
+
+nav{position:fixed;top:0;width:100%;z-index:999;padding:18px 0;transition:.3s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(10,12,16,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{font-size:22px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-0.5px;}
+.brand span{color:var(--accent);}
+.nav-link{color:var(--muted)!important;font-size:14px;font-weight:500;transition:.2s;padding:6px 14px!important;border-radius:6px;}
+.nav-link:hover{color:#fff!important;background:rgba(255,255,255,0.05);}
+.btn-hire{background:var(--accent)!important;color:#0a0c10!important;font-weight:700!important;border-radius:8px!important;padding:7px 20px!important;}
+.btn-hire:hover{background:#00ffb3!important;}
+.toggler-icon{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px;transition:.3s;}
+.navbar-toggler{border:none!important;background:transparent!important;padding:4px;}
+.navbar-toggler:focus{box-shadow:none!important;}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 0 60px;position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,160,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,160,0.08) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none;}
+.hero-title{font-size:clamp(56px,9vw,110px);font-weight:800;line-height:0.9;letter-spacing:-3px;margin-bottom:20px;}
+.hero-title .outline{-webkit-text-stroke:2px var(--accent);color:transparent;}
+.hero-sub{font-size:18px;color:var(--muted);font-weight:300;max-width:520px;line-height:1.7;margin-bottom:36px;}
+.hero-sub strong{color:var(--text);font-weight:500;}
+.btn-primary-custom{background:var(--accent);color:#0a0c10;font-weight:700;padding:13px 32px;border-radius:10px;text-decoration:none;font-size:15px;transition:.2s;display:inline-block;border:none;}
+.btn-primary-custom:hover{background:#00ffb3;transform:translateY(-2px);}
+.btn-outline-custom{background:transparent;color:var(--text);font-weight:500;padding:13px 32px;border-radius:10px;text-decoration:none;font-size:15px;transition:.2s;display:inline-block;border:1px solid var(--border);}
+.btn-outline-custom:hover{border-color:var(--accent);color:var(--accent);}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;}
+.chip{background:var(--dark3);border:1px solid var(--border);color:var(--muted);font-size:12px;padding:5px 14px;border-radius:50px;}
+.hero-avatar-wrap{position:relative;width:320px;height:380px;}
+.hero-avatar{width:280px;height:340px;border-radius:24px;background:linear-gradient(135deg,var(--dark3),var(--dark2));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:72px;font-weight:800;color:var(--accent);margin:0 auto;}
+.float-chip{position:absolute;background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(10px);}
+.fc1{top:10px;right:-10px;color:var(--accent);border-color:rgba(0,229,160,0.3);}
+.fc2{bottom:60px;left:-20px;color:var(--accent2);border-color:rgba(0,170,255,0.3);}
+.fc3{bottom:20px;right:0;color:#fff;}
+
+section{padding:90px 0;}
+.section-label{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.section-title{font-size:clamp(32px,5vw,48px);font-weight:800;letter-spacing:-1px;margin-bottom:16px;}
+.section-desc{color:var(--muted);font-size:16px;line-height:1.7;max-width:560px;}
+.divider{width:48px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:20px;}
+
+.about-section{background:var(--dark2);}
+.about-card{background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:32px;}
+.stat-num{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;color:var(--accent);line-height:1;}
+.stat-label{font-size:13px;color:var(--muted);margin-top:4px;}
+.info-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{width:36px;height:36px;border-radius:8px;background:rgba(0,229,160,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.info-label{font-size:12px;color:var(--muted);}
+.info-val{font-size:14px;font-weight:500;}
+
+.skill-category{background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:28px;}
+.skill-cat-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+.skill-item{margin-bottom:18px;}
+.skill-name{font-size:13px;font-weight:500;margin-bottom:7px;display:flex;justify-content:space-between;}
+.skill-name span{color:var(--muted);font-size:12px;}
+.skill-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.tech-pill{display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);padding:7px 14px;border-radius:8px;font-size:13px;font-weight:500;margin:4px;}
+.tech-pill:hover{border-color:var(--accent);color:var(--accent);cursor:default;}
+
+.projects-section{background:var(--dark2);}
+.project-card{background:var(--dark);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:.3s;height:100%;}
+.project-card:hover{border-color:rgba(0,229,160,0.4);transform:translateY(-4px);}
+.project-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden;}
+.project-body{padding:24px;}
+.project-tag{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.project-title{font-size:20px;font-weight:700;margin-bottom:10px;}
+.project-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+.project-techs{display:flex;flex-wrap:wrap;gap:6px;}
+.project-tech{background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2);color:var(--accent);font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;}
+
+.edu-card{background:var(--dark2);border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden;}
+.edu-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2));}
+.edu-degree{font-size:22px;font-weight:800;margin-bottom:6px;}
+.edu-uni{color:var(--accent);font-size:15px;font-weight:500;margin-bottom:4px;}
+.edu-year{color:var(--muted);font-size:13px;margin-bottom:20px;}
+.course-pill{background:var(--dark3);border:1px solid var(--border);font-size:12px;padding:5px 12px;border-radius:6px;display:inline-block;margin:3px;}
+
+.contact-section{background:var(--dark2);}
+.contact-card{background:var(--dark);border:1px solid var(--border);border-radius:20px;padding:40px;}
+.contact-item{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:44px;height:44px;border-radius:12px;background:rgba(0,229,160,0.1);border:1px solid rgba(0,229,160,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.contact-label{font-size:12px;color:var(--muted);}
+.contact-val{font-size:15px;font-weight:500;}
+.contact-val a{color:var(--text);text-decoration:none;}
+.contact-val a:hover{color:var(--accent);}
+.cta-box{background:linear-gradient(135deg,rgba(0,229,160,0.08),rgba(0,170,255,0.08));border:1px solid rgba(0,229,160,0.2);border-radius:20px;padding:48px 40px;text-align:center;}
+.cta-title{font-size:36px;font-weight:800;margin-bottom:12px;}
+.cta-desc{color:var(--muted);font-size:16px;margin-bottom:32px;}
+
+footer{background:var(--dark);border-top:1px solid var(--border);padding:28px 0;text-align:center;}
+footer p{color:var(--muted);font-size:13px;}
+footer span{color:var(--accent);}
+
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .hero-title{letter-spacing:-2px;}
+  .hero-avatar-wrap{display:none;}
+  .cta-box{padding:32px 20px;}
+  .contact-card{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="#" class="brand">AH<span>.</span></a>
+      <button class="navbar-toggler d-lg-none" type="button" onclick="toggleMenu()">
+        <span class="toggler-icon"></span>
+        <span class="toggler-icon"></span>
+        <span class="toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav d-none d-lg-flex flex-row gap-2 align-items-center mb-0" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#contact" class="nav-link btn-hire">Hire Me</a></li>
+      </ul>
+    </div>
+    <div id="mobileMenu" style="display:none;padding-top:16px;border-top:1px solid var(--border);margin-top:16px;">
+      <a href="#about" class="nav-link d-block py-2" onclick="toggleMenu()">About</a>
+      <a href="#skills" class="nav-link d-block py-2" onclick="toggleMenu()">Skills</a>
+      <a href="#projects" class="nav-link d-block py-2" onclick="toggleMenu()">Projects</a>
+      <a href="#education" class="nav-link d-block py-2" onclick="toggleMenu()">Education</a>
+      <a href="#contact" class="nav-link d-block py-2" onclick="toggleMenu()">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <h1 class="hero-title">
+          Ali<br/><span class="outline">Hassan</span>
+        </h1>
+        <p class="hero-sub">
+          <strong>Frontend Engineer</strong> building fast, responsive, production-ready UIs with
+          <strong>HTML5, CSS3 &amp; JavaScript</strong>. Based in Islamabad — open to remote &amp; on-site.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#projects" class="btn-primary-custom">View Projects</a>
+          <a href="#contact" class="btn-outline-custom">Get in Touch</a>
+        </div>
+        <div class="hero-chips">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">JavaScript ES6+</span>
+          <span class="chip">Bootstrap 5</span>
+          <span class="chip">Flexbox &amp; Grid</span>
+          <span class="chip">Responsive Design</span>
+        </div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-flex justify-content-end">
+        <div class="hero-avatar-wrap">
+          <div class="hero-avatar">AH</div>
+          <div class="float-chip fc1">HTML5 &amp; CSS3</div>
+          <div class="float-chip fc2">JS ES6+</div>
+          <div class="float-chip fc3">CGPA 3.25 / 4.0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5 fade-in">
+        <div class="section-label">About Me</div>
+        <div class="divider"></div>
+        <h2 class="section-title">Frontend engineer who loves clean UI</h2>
+        <p class="section-desc mb-4">
+          I'm a Software Engineering student at NUML University, Islamabad with hands-on experience building production-ready web interfaces. I write clean, maintainable code and thrive in remote &amp; collaborative environments.
+        </p>
+        <div class="about-card">
+          <div class="info-row">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-label">Location</div>
+              <div class="info-val">Islamabad, Pakistan</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📧</div>
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-val">Alihassancs13@gmail.com</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📞</div>
+            <div>
+              <div class="info-label">Phone</div>
+              <div class="info-val">+92-306-504-7072</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">🎓</div>
+            <div>
+              <div class="info-label">University</div>
+              <div class="info-val">NUML University, 2022–2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-in">
+        <div class="row g-4">
+          <div class="col-6">
+            <div class="about-card text-center">
+              <div class="stat-num">3.25</div>
+              <div class="stat-label">CGPA / 4.0</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="about-card text-center">
+              <div class="stat-num">3+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="about-card text-center">
+              <div class="stat-num">5+</div>
+              <div class="stat-label">Projects Built</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="about-card text-center">
+              <div class="stat-num">6+</div>
+              <div class="stat-label">Technologies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--dark);">
+  <div class="container">
+    <div class="text-center mb-5 fade-in">
+      <div class="section-label">Technical Skills</div>
+      <div class="divider mx-auto"></div>
+      <h2 class="section-title">My Tech Stack</h2>
+    </div>
+    <div class="row g-4 mb-4">
+      <div class="col-lg-6 fade-in">
+        <div class="skill-category">
+          <div class="skill-cat-title">Core Frontend</div>
+          <div class="skill-item">
+            <div class="skill-name">HTML5 <span>95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">CSS3 <span>92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">JavaScript ES6+ <span>88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Bootstrap 5 <span>92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-in">
+        <div class="skill-category">
+          <div class="skill-cat-title">Layout &amp; Tools</div>
+          <div class="skill-item">
+            <div class="skill-name">CSS Flexbox <span>94%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="94"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">CSS Grid <span>88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Responsive Design <span>90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Git &amp; GitHub <span>80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in text-center" style="padding:20px 0;">
+      <div class="tech-pill">🎨 HTML5</div>
+      <div class="tech-pill">💅 CSS3</div>
+      <div class="tech-pill">⚡ JavaScript ES6+</div>
+      <div class="tech-pill">🅱 Bootstrap 5</div>
+      <div class="tech-pill">📐 Flexbox</div>
+      <div class="tech-pill">🔲 CSS Grid</div>
+      <div class="tech-pill">📱 Responsive Design</div>
+      <div class="tech-pill">🎨 Figma</div>
+      <div class="tech-pill">🔀 Git</div>
+      <div class="tech-pill">⚡ Async/Await</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="container">
+    <div class="text-center mb-5 fade-in">
+      <div class="section-label">My Work</div>
+      <div class="divider mx-auto"></div>
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-lg-4 col-md-6 fade-in">
+        <div class="project-card">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#0a2a1a,#0a1f2e);">
+            🛡️
+          </div>
+          <div class="project-body">
+            <div class="project-tag">Final Year Project</div>
+            <h3 class="project-title">GuardShield 360</h3>
+            <p class="project-desc">Security workforce management web app with shift scheduling, staff assignment &amp; real-time dashboards. Built with clean, maintainable component structure.</p>
+            <div class="project-techs">
+              <span class="project-tech">HTML5</span>
+              <span class="project-tech">CSS3</span>
+              <span class="project-tech">JavaScript</span>
+              <span class="project-tech">Bootstrap 5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 fade-in">
+        <div class="project-card">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#1a0a2e,#0a1a2e);">
+            📝
+          </div>
+          <div class="project-body">
+            <div class="project-tag">Web App</div>
+            <h3 class="project-title">Interactive Quiz Form</h3>
+            <p class="project-desc">Dynamic form with conditional rendering, real-time validation &amp; reusable component architecture — production-ready, maintainable code.</p>
+            <div class="project-techs">
+              <span class="project-tech">HTML5</span>
+              <span class="project-tech">CSS3</span>
+              <span class="project-tech">JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 fade-in">
+        <div class="project-card">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#1a1a0a,#0a1a1a);">
+            🌐
+          </div>
+          <div class="project-body">
+            <div class="project-tag">Website</div>
+            <h3 class="project-title">Responsive Staging Site</h3>
+            <p class="project-desc">Fully responsive multi-page website using mobile-first design, CSS Flexbox/Grid, and cross-browser compatible JavaScript adhering to web standards.</p>
+            <div class="project-techs">
+              <span class="project-tech">HTML5</span>
+              <span class="project-tech">CSS3</span>
+              <span class="project-tech">JavaScript</span>
+              <span class="project-tech">Flexbox</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:var(--dark);">
+  <div class="container">
+    <div class="text-center mb-5 fade-in">
+      <div class="section-label">Education</div>
+      <div class="divider mx-auto"></div>
+      <h2 class="section-title">Academic Background</h2>
+    </div>
+    <div class="row justify-content-center fade-in">
+      <div class="col-lg-8">
+        <div class="edu-card">
+          <h3 class="edu-degree">Bachelor of Science in Software Engineering</h3>
+          <div class="edu-uni">NUML University, Islamabad, Pakistan</div>
+          <div class="edu-year">2022 – 2026 &nbsp;·&nbsp; <strong style="color:var(--accent);">CGPA: 3.25 / 4.0</strong></div>
+          <div>
+            <div style="font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Relevant Coursework</div>
+            <span class="course-pill">Web Technologies</span>
+            <span class="course-pill">Mobile App Development</span>
+            <span class="course-pill">Data Structures &amp; Algorithms</span>
+            <span class="course-pill">Database Systems</span>
+            <span class="course-pill">HCI</span>
+            <span class="course-pill">Software Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="text-center mb-5 fade-in">
+      <div class="section-label">Contact</div>
+      <div class="divider mx-auto"></div>
+      <h2 class="section-title">Get in Touch</h2>
+    </div>
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5 fade-in">
+        <div class="contact-card">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-val"><a href="mailto:Alihassancs13@gmail.com">Alihassancs13@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-val"><a href="tel:+923065047072">+92-306-504-7072</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-val">Islamabad, Pakistan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-in">
+        <div class="cta-box">
+          <h3 class="cta-title">Let's Build Something Great</h3>
+          <p class="cta-desc">I'm currently open to new opportunities — freelance, part-time, or full-time. Let's talk!</p>
+          <a href="mailto:Alihassancs13@gmail.com" class="btn-primary-custom" style="font-size:16px;padding:15px 40px;">
+            📨 Send me an Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Designed &amp; Built by <span>Ali Hassan</span> · Frontend Engineer · Islamabad 🇵🇰</p>
+    <p style="margin-top:6px;font-size:12px;">HTML5 · CSS3 · JavaScript · Bootstrap 5</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.style.display=m.style.display==='none'?'block':'none';
+}
+
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');}
+  });
+},{threshold:0.15});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+const skillObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.skill-fill').forEach(bar=>{
+        bar.style.width=bar.dataset.width+'%';
+      });
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.skill-category').forEach(el=>skillObserver.observe(el));
+
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-100)cur=s.getAttribute('id');
+  });
+  document.querySelectorAll('.nav-link').forEach(l=>{
+    l.style.color='';
+    if(l.getAttribute('href')==='#'+cur)l.style.color='var(--accent)';
+  });
+});
+</script>
+</body>
+</html>
