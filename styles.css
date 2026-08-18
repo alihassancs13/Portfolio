@@ -1,0 +1,1084 @@
+/* ==========================================================================
+   Ali Hassan — Portfolio (plain HTML + Tailwind CDN + CSS + JS)
+   Design tokens, base styles, custom utilities and animations.
+   Tailwind utilities themselves come from the CDN build in index.html.
+   ========================================================================== */
+
+:root {
+  --radius: 0.875rem;
+  --background: oklch(0.17 0.021 250);
+  --foreground: oklch(0.97 0.006 240);
+  --surface: oklch(0.215 0.023 250);
+  --surface-2: oklch(0.26 0.026 250);
+  --primary: oklch(0.79 0.14 190);
+  --primary-foreground: oklch(0.18 0.03 235);
+  --secondary: oklch(0.26 0.026 250);
+  --muted-foreground: oklch(0.71 0.021 250);
+  --accent: oklch(0.66 0.16 255);
+  --destructive: oklch(0.62 0.21 25);
+  --warning: oklch(0.6 0.15 275);
+  --border: oklch(0.32 0.028 250);
+
+  --gradient-accent: linear-gradient(100deg, oklch(0.79 0.14 190), oklch(0.66 0.16 255));
+  --gradient-surface: linear-gradient(160deg, oklch(0.235 0.024 250), oklch(0.185 0.022 250));
+  --shadow-glow: 0 18px 60px -22px oklch(0.79 0.14 190 / 0.45);
+  --shadow-card: 0 24px 60px -34px oklch(0.1 0.03 250 / 0.9);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ------------------------------- base ----------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --------------------------- custom components -------------------------- */
+
+.text-gradient {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.surface-card {
+  background: var(--gradient-surface);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 8px);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.surface-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+  box-shadow: var(--shadow-glow);
+}
+
+.grid-lines {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.icon-tile {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--secondary);
+  color: var(--primary);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.surface-card:hover .icon-tile {
+  transform: rotate(-8deg) scale(1.08);
+}
+/* --------------------------- about visual -------------------------- */
+.about-visual {
+  position: relative;
+  align-self: stretch;   /* stretch to match the tallest sibling column */
+  height: 100%;
+  min-height: 480px;
+  border-radius: calc(var(--radius) + 8px);
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    color-mix(in oklab, var(--primary) 8%, transparent),
+    transparent 60%
+  );
+}
+#about-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+@media (max-width: 1023px) {
+  .about-visual {
+    min-height: 420px;
+  }
+}
+.chip {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--background) 40%, transparent);
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted-foreground);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* chip stagger-in: parent card hover ripples a lift through its chips */
+.surface-card:hover .chip {
+  border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+  color: var(--foreground);
+}
+
+.surface-card:hover ul.flex-wrap .chip,
+.surface-card:hover ul.mt-5.flex-wrap .chip,
+.surface-card:hover ul.mt-6.flex-wrap .chip {
+  animation: chip-pop 0.4s ease both;
+}
+
+.surface-card ul.flex-wrap .chip:nth-child(1) { animation-delay: 0.02s; }
+.surface-card ul.flex-wrap .chip:nth-child(2) { animation-delay: 0.06s; }
+.surface-card ul.flex-wrap .chip:nth-child(3) { animation-delay: 0.1s; }
+.surface-card ul.flex-wrap .chip:nth-child(4) { animation-delay: 0.14s; }
+.surface-card ul.flex-wrap .chip:nth-child(5) { animation-delay: 0.18s; }
+.surface-card ul.flex-wrap .chip:nth-child(6) { animation-delay: 0.22s; }
+
+@keyframes chip-pop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-3px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--gradient-accent);
+  color: var(--primary-foreground);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-outline {
+  background: color-mix(in oklab, var(--secondary) 40%, transparent);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+/* nav */
+.site-header {
+  /* Force header above everything — global canvas (z:0), main content (z:1), hero canvases */
+  position: fixed;
+  z-index: 200;
+  isolation: isolate;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--border);
+  background-color: color-mix(in oklab, var(--background) 85%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+/* nav-link underline slide: a single shared indicator glides between links */
+.nav-link {
+  position: relative;
+  border-radius: 9999px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.28rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: var(--gradient-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.nav-link:hover {
+  color: var(--foreground);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link.is-active {
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* --------------------------- nav dropdown ----------------------------- */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-dropdown-chevron {
+  width: 0.75rem;
+  height: 0.75rem;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-dropdown:hover .nav-dropdown-chevron,
+.nav-dropdown:focus-within .nav-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  min-width: 14.5rem;
+  background: color-mix(in oklab, var(--surface) 92%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem;
+  box-shadow: 0 20px 40px -12px oklch(0.1 0.03 250 / 0.85);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.22s;
+  z-index: 9999;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: calc(var(--radius) - 4px);
+  color: var(--muted-foreground);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-dropdown-item:hover {
+  background-color: var(--surface-2);
+  color: var(--foreground);
+  transform: translateX(2px);
+}
+
+.nav-dropdown-item:hover .nav-dropdown-title {
+  color: var(--primary);
+}
+
+/* progress bars */
+.meter {
+  height: 0.375rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: var(--secondary);
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 9999px;
+  background: var(--gradient-accent);
+  transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------ effects --------------------------------- */
+
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  background: var(--primary);
+  filter: blur(120px);
+  opacity: 0.16;
+  pointer-events: none;
+  animation: orb-float 12s ease-in-out infinite;
+}
+
+@keyframes orb-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 28px, 0) scale(1.08);
+  }
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.pulse-dot {
+  position: relative;
+  display: inline-flex;
+  height: 0.375rem;
+  width: 0.375rem;
+}
+
+.pulse-dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--primary);
+  opacity: 0.75;
+  animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  background: var(--primary);
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------- gradient text shimmer ----------------------------- */
+/* animated sweep across the accent gradient headline text */
+.text-gradient-shimmer {
+  background: linear-gradient(
+    100deg,
+    oklch(0.79 0.14 190) 0%,
+    oklch(0.66 0.16 255) 35%,
+    oklch(0.95 0.05 200) 50%,
+    oklch(0.66 0.16 255) 65%,
+    oklch(0.79 0.14 190) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-sweep 6s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ----------------------------- typewriter --------------------------------- */
+/* line reveal + blinking caret, driven by JS setting a CSS custom width */
+[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  white-space: normal;
+  border-right: 2px solid var(--primary);
+  animation: caret-blink 0.8s step-end infinite;
+}
+
+[data-typewriter].is-done {
+  border-right-color: transparent;
+  animation: none;
+}
+
+@keyframes caret-blink {
+  0%,
+  100% {
+    border-color: var(--primary);
+  }
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* -------------------------- hamburger -> X morph -------------------------- */
+.hamburger {
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 0.7rem;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 9999px;
+  background: currentColor;
+  transition:
+    transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.2s ease,
+    top 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+.hamburger.is-open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-open span:nth-child(3) {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* ------------------------------ tilt card ---------------------------------- */
+/* 3D pointer-tilt, rotation driven by JS via custom properties */
+.tilt-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+.tilt-card:hover {
+  transition: none;
+}
+
+/* ------------------------- grid-lines parallax ------------------------------ */
+[data-parallax] {
+  transform: translate3d(0, var(--parallax-y, 0), 0);
+  will-change: transform;
+}
+
+/* ------------------------- fluid-ink hero background ------------------------- */
+/* WebGL canvas sits behind all hero content; a scrim keeps text legible */
+#hero-fluid-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-fluid-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    115% 95% at 50% 46%,
+    color-mix(in oklab, var(--background) 78%, transparent) 0%,
+    color-mix(in oklab, var(--background) 78%, transparent) 24%,
+    color-mix(in oklab, var(--background) 56%, transparent) 52%,
+    color-mix(in oklab, var(--background) 15%, transparent) 100%
+  );
+}
+
+/* ===================== Skills — 3D Cinematic Scene & Cards ===================== */
+#skills .skills-3d-scene-grid {
+  perspective: 1600px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.skill-card-scene {
+  position: relative;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+  contain: layout style;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  
+  /* Staggered cinematic entrance */
+  --card-index: 0;
+  --entrance-direction: 1;
+}
+
+.skill-card-scene[data-card-index="0"] { --card-index: 0; --entrance-direction: -1; }
+.skill-card-scene[data-card-index="1"] { --card-index: 1; --entrance-direction: 1; }
+.skill-card-scene[data-card-index="2"] { --card-index: 2; --entrance-direction: -1; }
+.skill-card-scene[data-card-index="3"] { --card-index: 3; --entrance-direction: 1; }
+.skill-card-scene[data-card-index="4"] { --card-index: 4; --entrance-direction: -1; }
+.skill-card-scene[data-card-index="5"] { --card-index: 5; --entrance-direction: 1; }
+
+
+/* 3D floating reactive shadow plane beneath each card */
+.skill-card-shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--radius) + 8px);
+  pointer-events: none;
+  z-index: 0;
+  transform-style: preserve-3d;
+  box-shadow: 
+    var(--shadow-x, 0px) var(--shadow-y, 18px) var(--shadow-blur, 36px) var(--shadow-spread, -10px) oklch(0.1 0.03 250 / var(--shadow-op, 0.65)),
+    var(--shadow-x, 0px) calc(var(--shadow-y, 18px) * 0.5) calc(var(--shadow-blur, 36px) * 0.4) var(--shadow-spread, -10px) oklch(0.79 0.14 190 / calc(var(--shadow-op, 0.65) * 0.15));
+  transition: opacity 0.4s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* 3D physical glass card */
+.skill-card-3d {
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+  will-change: transform, filter;
+  overflow: visible;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 8px);
+  background: var(--gradient-surface);
+  backdrop-filter: blur(calc(12px + var(--motion-blur, 0px)));
+  -webkit-backdrop-filter: blur(calc(12px + var(--motion-blur, 0px)));
+  outline: none;
+  transform: perspective(1400px)
+    translate3d(var(--tx, 0px), var(--ty, 0px), var(--tz, 0px))
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+  transition: border-color 0.35s ease, background 0.35s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.skill-card-3d:focus-visible {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 50%, transparent);
+}
+
+/* Dynamic virtual cursor specular studio light overlay */
+.card-specular-light {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--light-opacity, 0);
+  background: 
+    radial-gradient(
+      420px circle at var(--light-x, 50%) var(--light-y, 50%),
+      color-mix(in oklab, var(--primary) 32%, transparent) 0%,
+      color-mix(in oklab, var(--primary) 18%, transparent) 18%,
+      color-mix(in oklab, var(--accent) 12%, transparent) 38%,
+      transparent 70%
+    ),
+    radial-gradient(
+      280px circle at calc(var(--light-x, 50%) + 12px) calc(var(--light-y, 50%) - 15px),
+      color-mix(in oklab, var(--accent) 15%, transparent) 0%,
+      color-mix(in oklab, var(--accent) 6%, transparent) 25%,
+      transparent 55%
+    );
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease-out;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Dynamic shifting glass sheen reflection */
+.card-glass-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  opacity: var(--sheen-opacity, 0.15);
+  background: linear-gradient(
+    calc(125deg + var(--ry, 0deg) * 2.2),
+    transparent 15%,
+    color-mix(in oklab, var(--foreground) 5%, transparent) 38%,
+    color-mix(in oklab, var(--primary) 18%, transparent) 48%,
+    color-mix(in oklab, var(--accent) 8%, transparent) 55%,
+    color-mix(in oklab, var(--foreground) 4%, transparent) 62%,
+    transparent 78%
+  );
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease-out;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Dynamic edge border illumination */
+.card-border-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 3;
+  opacity: var(--border-glow-op, 0);
+  background: radial-gradient(
+    520px circle at var(--light-x, 50%) var(--light-y, 50%),
+    color-mix(in oklab, var(--primary) 75%, transparent) 0%,
+    color-mix(in oklab, var(--primary) 50%, transparent) 12%,
+    color-mix(in oklab, var(--accent) 45%, transparent) 30%,
+    transparent 68%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  transition: opacity 0.3s ease-out;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Multi-layer 3D depth planes */
+.skill-card-3d .card-layer {
+  position: relative;
+  transform-style: preserve-3d;
+  z-index: 4;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.skill-card-3d .card-header-layer {
+  transform: translateZ(32px);
+  will-change: transform;
+}
+
+.skill-card-3d .card-header-layer .icon-tile {
+  transform: translateZ(16px);
+  box-shadow: 
+    0 8px 24px -6px oklch(0.1 0.03 250 / 0.5),
+    inset 0 1px 2px oklch(1 0 0 / 0.1),
+    inset 0 -1px 2px oklch(0 0 0 / 0.2);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.skill-card-3d:hover .card-header-layer .icon-tile {
+  transform: translateZ(22px) rotate(-6deg) scale(1.08);
+}
+
+.skill-card-3d .card-header-layer h3 {
+  transform: translateZ(8px);
+  will-change: transform;
+}
+
+.skill-card-3d .card-meter-layer {
+  transform: translateZ(24px);
+  will-change: transform;
+}
+
+.skill-card-3d .card-badges-layer {
+  transform: translateZ(38px);
+  will-change: transform;
+}
+
+/* Cinematic progress bar energy pulse */
+.meter-energy-pulse {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60px;
+  width: 60px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(0.98 0.05 190 / 0.4) 15%,
+    oklch(0.98 0.05 190 / 0.95) 35%,
+    oklch(0.85 0.18 190 / 1) 50%,
+    oklch(0.78 0.15 190 / 0.95) 65%,
+    oklch(0.95 0.08 200 / 0.3) 85%,
+    transparent 100%
+  );
+  filter: 
+    drop-shadow(0 0 8px oklch(0.79 0.14 190 / 0.9))
+    drop-shadow(0 0 16px oklch(0.79 0.14 190 / 0.6));
+  opacity: 0;
+  pointer-events: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.meter-energy-pulse.is-animating {
+  opacity: 1;
+  animation: meter-scan 1.4s cubic-bezier(0.15, 0.85, 0.25, 0.95) forwards;
+}
+
+@keyframes meter-scan {
+  0% {
+    left: -70px;
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.8;
+  }
+  25% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* Magnetic badges with independent organic 3D physics */
+.skill-card-3d .chip {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow, border-color;
+  transform: translate3d(
+    var(--badge-tx, 0px),
+    var(--badge-ty, 0px),
+    var(--badge-tz, 0px)
+  )
+  rotateX(var(--badge-rx, 0deg))
+  rotateY(var(--badge-ry, 0deg))
+  scale(var(--badge-scale, 1));
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 
+    inset 0 1px 2px oklch(1 0 0 / 0.1),
+    0 4px 12px -4px oklch(0 0 0 / 0.15);
+}
+
+.skill-card-3d .chip:hover,
+.skill-card-3d .chip.is-magnetic {
+  border-color: color-mix(in oklab, var(--primary) 75%, transparent);
+  background-color: color-mix(in oklab, var(--surface-2) 95%, transparent);
+  box-shadow: 
+    0 12px 32px -8px oklch(0.79 0.14 190 / 0.4),
+    inset 0 1px 2px oklch(1 0 0 / 0.15),
+    inset 0 -1px 2px oklch(0 0 0 / 0.1);
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-3d-scene-grid,
+  .skill-card-scene,
+  .skill-card-3d,
+  .skill-card-shadow,
+  .card-layer,
+  .icon-tile,
+  .chip {
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  .card-specular-light,
+  .card-glass-sheen,
+  .card-border-glow,
+  .meter-energy-pulse {
+    display: none !important;
+  }
+  .marquee-track,
+  .glow-orb,
+  .pulse-dot::before,
+  .text-gradient-shimmer,
+  .hamburger span,
+  .tilt-card,
+  [data-parallax] {
+    animation: none;
+    transition: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  [data-typewriter] {
+    animation: none;
+    border-right-color: transparent;
+  }
+  #hero-fluid-canvas {
+    display: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==========================================================================
+   CINEMATIC 3D — Global floating layer, card levitation, specular lighting
+   ========================================================================== */
+
+/* ──────────────── 1. Full-page 3D canvas layer ──────────────── */
+#global-3d-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  /* Let the canvas be above the page BG but below all content */
+}
+
+/* Ensure all main content sections float above the canvas */
+body > main,
+body > footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header stays at its existing high z-index (z-50 = 50 in Tailwind) — do not override */
+/* ──────────────── 2. Card 3D Levitation / Float ──────────────── */
+@keyframes card-float {
+  0%   { transform: perspective(1100px) rotateX(var(--tilt-rx, 0deg)) rotateY(var(--tilt-ry, 0deg)) translateY(0px) translateZ(0px); }
+  50%  { transform: perspective(1100px) rotateX(var(--tilt-rx, 0deg)) rotateY(var(--tilt-ry, 0deg)) translateY(-7px) translateZ(6px); }
+  100% { transform: perspective(1100px) rotateX(var(--tilt-rx, 0deg)) rotateY(var(--tilt-ry, 0deg)) translateY(0px) translateZ(0px); }
+}
+
+/* Card 3D Levitation — applied to generic surface-cards ONLY (not skill-card-3d) */
+.float-levitate:not(.skill-card-3d) {
+  animation: card-float var(--float-duration, 5s) ease-in-out var(--float-delay, 0s) infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* 3D Tilt on hover — driven by JS CSS custom props */
+.float-levitate.is-hovered-3d:not(.skill-card-3d) {
+  animation-play-state: paused;
+  transform: perspective(1100px)
+    rotateX(var(--tilt-rx, 0deg))
+    rotateY(var(--tilt-ry, 0deg))
+    translateY(-10px)
+    translateZ(12px) !important;
+  transition: transform 0.15s ease-out !important;
+}
+
+/* ──────────────── 3. Specular Light Overlay (Magnetic Glint) ──────────────── */
+.card-specular-light {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--pointer-x, 50%) var(--pointer-y, 30%),
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 35%,
+    transparent 65%
+  );
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+/* Specular glint — only on non-skill cards injected by cinematic-3d.js */
+.float-levitate.is-hovered-3d:not(.skill-card-3d) .card-specular-light {
+  opacity: 1;
+}
+
+/* ──────────────── 4. Section Deep Parallax Floating Elements ──────────────── */
+[data-parallax-3d] {
+  will-change: transform;
+  transition: transform 0.08s linear;
+}
+
+/* ──────────────── 5. Floating Geometric Wireframe Badges (decorative) ──────────────── */
+.floating-geo {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: geo-appear 1.2s ease forwards, geo-orbit 18s linear infinite;
+}
+
+@keyframes geo-appear {
+  to { opacity: 0.22; }
+}
+
+@keyframes geo-orbit {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  33%  { transform: translateY(-14px) rotate(8deg); }
+  66%  { transform: translateY(8px) rotate(-5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* ──────────────── 6. Cinematic Atmospheric Depth Fog ──────────────── */
+.cinematic-depth-fog {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 15% 15%, oklch(0.79 0.14 190 / 0.055) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, oklch(0.66 0.16 255 / 0.045) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, oklch(0.75 0.15 45 / 0.03)  0%, transparent 60%);
+  animation: fog-breathe 14s ease-in-out infinite alternate;
+}
+
+@keyframes fog-breathe {
+  0%   { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1;   transform: scale(1.03); }
+}
+
+/* ──────────────── 7. Suppress 3D on reduced-motion ──────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .float-levitate:not(.skill-card-3d) {
+    animation: none !important;
+    transform: none !important;
+  }
+  .card-specular-light,
+  .floating-geo,
+  .cinematic-depth-fog {
+    display: none !important;
+  }
+  #global-3d-canvas {
+    display: none !important;
+  }
+}

@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ali Hassan — Full-Stack Developer | Vue 3 &amp; Django REST</title>
+    <meta
+    name="description"
+    content="Ali Hassan is a full-stack developer in Islamabad, Pakistan building end-to-end web apps with Vue 3, Pinia, Django REST Framework and MySQL."
+    />
+    <link rel="canonical" href="https://alihassan.dev/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ali Hassan — Full-Stack Developer" />
+    <meta
+    property="og:description"
+    content="End-to-end web applications with Vue 3 and Django REST Framework. Based in Islamabad, Pakistan."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS (browser build) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- GSAP & ScrollTrigger for high-performance cinematic 3D physics -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <style type="text/tailwindcss">
+    @theme {
+        --color-background: oklch(0.17 0.021 250);
+        --color-foreground: oklch(0.97 0.006 240);
+        --color-surface: oklch(0.215 0.023 250);
+        --color-surface-2: oklch(0.26 0.026 250);
+        --color-primary: oklch(0.79 0.14 190);
+        --color-primary-foreground: oklch(0.18 0.03 235);
+        --color-secondary: oklch(0.26 0.026 250);
+        --color-muted-foreground: oklch(0.71 0.021 250);
+        --color-accent: oklch(0.66 0.16 255);
+        --color-destructive: oklch(0.62 0.21 25);
+        --color-warning: oklch(0.6 0.15 275);
+        --color-border: oklch(0.32 0.028 250);
+        --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+        --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    </style>
+
+    <!-- Project CSS: tokens, custom components, animations -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="font-sans">
+    <!-- ══════════ CINEMATIC 3D GLOBAL FLOATING LAYER ══════════ -->
+    <canvas id="global-3d-canvas" aria-hidden="true"></canvas>
+    <div class="cinematic-depth-fog" aria-hidden="true"></div>
+
+    <!-- ============================== HEADER ============================== -->
+    <header data-header class="site-header fixed inset-x-0 top-0 z-50">
+    <div
+        class="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 lg:px-8"
+    >
+        <a href="#home" class="flex min-w-0 items-center gap-3">
+        <span
+            class="bg-gradient-accent grid h-10 w-10 shrink-0 place-items-center rounded-xl font-display text-sm font-bold text-primary-foreground"
+            >AH</span
+        >
+        <span class="min-w-0">
+            <span class="block truncate font-display text-sm font-bold">Ali Hassan</span>
+            <span class="block truncate font-mono text-[0.65rem] text-muted-foreground"
+            >Full-Stack Developer</span
+            >
+        </span>
+        </a>
+
+        <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <a data-nav-link href="#home" class="nav-link">Home</a>
+        <a data-nav-link href="#about" class="nav-link">About</a>
+        <a data-nav-link href="#skills" class="nav-link">Skills</a>
+        
+        <!-- Projects Dropdown -->
+        <div class="nav-dropdown">
+          <a data-nav-link href="#projects" class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            Projects
+            <svg class="nav-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="rasant-solutions.html" class="nav-dropdown-item">
+              <span class="h-2 w-2 shrink-0 rounded-full bg-primary"></span>
+              <div class="min-w-0">
+                <span class="nav-dropdown-title block truncate text-xs font-semibold text-foreground">Rasant Solutions</span>
+                <span class="block truncate text-[0.65rem] text-muted-foreground">Admin Panel (Vue 3 &amp; Django)</span>
+              </div>
+            </a>
+            <a href="station-hub.html" class="nav-dropdown-item">
+              <span class="h-2 w-2 shrink-0 rounded-full bg-accent"></span>
+              <div class="min-w-0">
+                <span class="nav-dropdown-title block truncate text-xs font-semibold text-foreground">Station Hub</span>
+                <span class="block truncate text-[0.65rem] text-muted-foreground">Car Wash Booking App</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a data-nav-link href="#education" class="nav-link">Education</a>
+        <a data-nav-link href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="btn btn-primary btn-sm ml-2">Hire Me</a>
+        </nav>
+
+        <button
+        data-menu-toggle
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-border bg-secondary lg:hidden"
+        >
+        <span class="hamburger" data-hamburger aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        </button>
+    </div>
+
+    <nav
+        data-mobile-nav
+        hidden
+        aria-label="Mobile"
+        class="border-t border-border bg-background/95 px-5 pb-5 backdrop-blur-xl lg:hidden"
+    >
+        <div class="flex flex-col">
+        <a href="#home" class="border-b border-border/60 py-3 text-sm text-muted-foreground">Home</a>
+        <a href="#about" class="border-b border-border/60 py-3 text-sm text-muted-foreground">About</a>
+        <a href="#skills" class="border-b border-border/60 py-3 text-sm text-muted-foreground">Skills</a>
+        
+        <div class="border-b border-border/60 py-2.5">
+          <a href="#projects" class="block py-1 text-sm font-medium text-muted-foreground hover:text-foreground">Projects</a>
+          <div class="mt-1.5 flex flex-col gap-1 border-l border-border/60 pl-3">
+            <a href="rasant-solutions.html" class="flex items-center gap-2 py-1 text-xs text-muted-foreground hover:text-primary">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+              <span>Rasant Solutions</span>
+            </a>
+            <a href="station-hub.html" class="flex items-center gap-2 py-1 text-xs text-muted-foreground hover:text-primary">
+              <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+              <span>Station Hub</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="#education" class="border-b border-border/60 py-3 text-sm text-muted-foreground">Education</a>
+        <a href="#contact" class="border-b border-border/60 py-3 text-sm text-muted-foreground">Contact</a>
+        </div>
+    </nav>
+    </header>
+
+    <main>
+    <!-- =============================== HERO ============================ -->
+<section id="home" class="relative overflow-hidden pt-28 pb-10 lg:pt-36 lg:pb-14">
+            <!-- WebGL fluid-ink background — replaces the old static hero-bg.jpg -->
+        <canvas
+        id="hero-fluid-canvas"
+        aria-hidden="true"
+        ></canvas>
+        <div class="hero-fluid-scrim" aria-hidden="true"></div>
+        <div class="grid-lines absolute inset-0 opacity-70" data-parallax aria-hidden="true"></div>
+        <div class="glow-orb -top-24 -left-20 h-[26rem] w-[26rem]" aria-hidden="true"></div>
+        <div
+        class="glow-orb top-40 right-[-8rem] h-[22rem] w-[22rem]"
+        aria-hidden="true"
+        style="background: var(--accent); animation-delay: -4s"
+        ></div>
+        <div
+        class="absolute inset-x-0 bottom-0 h-40"
+        aria-hidden="true"
+        style="background: linear-gradient(to bottom, transparent, var(--background))"
+        ></div>
+
+        <div class="relative z-10 mx-auto max-w-6xl px-5 lg:px-8">
+        <div class="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+            <div class="reveal">
+            <p class="eyebrow">Full-Stack Developer</p>
+            <h1 class="mt-3 text-4xl leading-[1.05] font-bold sm:text-5xl lg:text-6xl">
+                Ali Hassan builds
+                <span class="text-gradient text-gradient-shimmer">end-to-end web applications</span> with Vue 3 &amp;
+                Django REST Framework.
+            </h1>
+            <p class="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg" data-typewriter>
+                Based in Islamabad, Pakistan — shipping features from database models and REST APIs
+                through to polished, responsive interfaces.
+            </p>
+
+            <div class="mt-9 flex flex-wrap gap-3">
+                <a href="#projects" class="btn btn-primary">
+                View Projects
+                <svg
+                    class="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                >
+                    <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+                </a>
+                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+
+            <dl class="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-border pt-6">
+                <div class="min-w-0">
+                <dt class="font-display text-2xl font-bold">3.25</dt>
+                <dd
+                    class="mt-1 font-mono text-[0.6rem] tracking-widest text-muted-foreground uppercase"
+                >
+                    CGPA / 4.0
+                </dd>
+                </div>
+                <div class="min-w-0">
+                <dt class="font-display text-2xl font-bold">6+</dt>
+                <dd
+                    class="mt-1 font-mono text-[0.6rem] tracking-widest text-muted-foreground uppercase"
+                >
+                    Modules shipped
+                </dd>
+                </div>
+                <div class="min-w-0">
+                <dt class="font-display text-2xl font-bold">15+</dt>
+                <dd
+                    class="mt-1 font-mono text-[0.6rem] tracking-widest text-muted-foreground uppercase"
+                >
+                    Technologies
+                </dd>
+                </div>
+            </dl>
+            </div>
+
+            <div class="reveal">
+            <div class="surface-card tilt-card overflow-hidden p-0">
+                <div class="flex items-center gap-2 border-b border-border bg-background/50 px-4 py-3">
+                <span class="h-2.5 w-2.5 rounded-full bg-destructive/70"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-warning/70"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-primary/70"></span>
+                <span class="ml-2 truncate font-mono text-[0.65rem] text-muted-foreground"
+                    >admin-panel / api / projects.py</span
+                >
+                </div>
+                <pre class="overflow-x-auto px-5 py-5 font-mono text-[0.7rem] leading-6 sm:text-xs"><div class="flex gap-4"><span class="w-4 shrink-0 text-right text-muted-foreground/40 select-none">1</span><span class="text-primary">class Project(models.Model):</span></div><div class="flex gap-4"><span class="w-4 shrink-0 text-right text-muted-foreground/40 select-none">2</span><span class="text-muted-foreground">    title = models.CharField(max_length=120)</span></div><div class="flex gap-4"><span class="w-4 shrink-0 text-right text-muted-foreground/40 select-none">3</span><span class="text-muted-foreground">    stack = models.JSONField(default=list)</span></div><div class="flex gap-4"><span class="w-4 shrink-0 text-right text-muted-foreground/40 select-none">4</span><span> </span></div><div class="flex gap-4"><span class="w-4 shrink-0 text-right text-muted-foreground/40 select-none">5</span><span class="text-muted-foreground/60">// vue 3 + pinia</span></div><div class="flex gap-4"><span class="w-4 shrink-0 text-right text-muted-foreground/40 select-none">6</span><span class="text-foreground">const { data } = await api.get('/projects/')</span></div><div class="flex gap-4"><span class="w-4 shrink-0 text-right text-muted-foreground/40 select-none">7</span><span class="text-primary">store.projects = data  // ✓ shipped</span></div></pre>
+            </div>
+
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <div class="surface-card flex items-center gap-3 p-4">
+                <span class="icon-tile h-9 w-9">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </span>
+                <span class="min-w-0">
+                    <span class="block text-sm font-semibold">Frontend</span>
+                    <span class="block truncate font-mono text-[0.65rem] text-muted-foreground"
+                    >Vue 3 · Pinia · Tailwind</span
+                    >
+                </span>
+                </div>
+                <div class="surface-card flex items-center gap-3 p-4">
+                <span class="icon-tile h-9 w-9">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></svg>
+                </span>
+                <span class="min-w-0">
+                    <span class="block text-sm font-semibold">Backend</span>
+                    <span class="block truncate font-mono text-[0.65rem] text-muted-foreground"
+                    >Django REST · MySQL</span
+                    >
+                </span>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- tech marquee (duplicated by script.js for a seamless loop) -->
+        <div class="marquee-mask relative mt-16 overflow-hidden">
+            <div data-marquee class="marquee-track flex w-max gap-2">
+            <span class="chip whitespace-nowrap">Vue 3</span>
+            <span class="chip whitespace-nowrap">Pinia</span>
+            <span class="chip whitespace-nowrap">Django REST Framework</span>
+            <span class="chip whitespace-nowrap">Python</span>
+            <span class="chip whitespace-nowrap">JavaScript ES6+</span>
+            <span class="chip whitespace-nowrap">MySQL</span>
+            <span class="chip whitespace-nowrap">Tailwind CSS</span>
+            <span class="chip whitespace-nowrap">React Native</span>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- =============================== ABOUT =========================== -->
+<section id="about" class="mx-auto max-w-6xl px-5 pt-10 pb-24 lg:px-8">
+          <div class="reveal mb-12 max-w-2xl">
+        <p class="eyebrow">About</p>
+        <h2 class="mt-3 text-3xl font-bold sm:text-4xl">
+          Full-stack by practice, not just by title.
+        </h2>
+      </div>
+
+      <div class="grid gap-10 lg:grid-cols-[0.85fr_1.05fr_0.9fr]">
+        <!-- particle vortex visual -->
+        <div class="reveal about-visual self-stretch" aria-hidden="true">
+  <canvas id="about-particles"></canvas>
+</div>
+
+        <div class="reveal space-y-5 text-muted-foreground">
+          <p>
+            I'm a Software Engineering graduate with hands-on experience building and maintaining
+            web applications end-to-end — Vue 3 on the frontend, Django REST Framework on the
+            backend. I design RESTful APIs, model relational MySQL schemas, and write clean,
+            reusable code across the stack.
+          </p>
+          <p>
+            I'm comfortable collaborating with designers and developers, owning features from
+            database models through to the UI, and adapting quickly to unfamiliar tasks. I lean on
+            AI-assisted workflows (GitHub Copilot, Claude, ChatGPT) to move faster without losing
+            code quality, and I built a React Native mobile app as a personal project to widen my
+            product perspective.
+          </p>
+
+        </div>
+
+        <div class="reveal grid grid-cols-3 gap-4 self-start lg:grid-cols-1">
+          <div class="surface-card p-6">
+            <p class="text-gradient font-display text-3xl font-bold">2+</p>
+            <p class="mt-1 font-mono text-[0.65rem] tracking-widest text-muted-foreground uppercase">Projects Built</p>
+          </div>
+          <div class="surface-card p-6">
+            <p class="text-gradient font-display text-3xl font-bold">15+</p>
+            <p class="mt-1 font-mono text-[0.65rem] tracking-widest text-muted-foreground uppercase">Technologies</p>
+          </div>
+          <div class="surface-card p-6">
+            <p class="text-gradient font-display text-3xl font-bold">2026</p>
+            <p class="mt-1 font-mono text-[0.65rem] tracking-widest text-muted-foreground uppercase">Graduating</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== SKILLS ========================== -->
+    <section id="skills" class="bg-surface/40 pt-24 pb-10">
+        <div class="mx-auto max-w-6xl px-5 lg:px-8">
+        <div class="reveal mb-12 max-w-2xl">
+            <p class="eyebrow">Skills</p>
+            <h2 class="mt-3 text-3xl font-bold sm:text-4xl">The stack I work in daily.</h2>
+            <p class="mt-4 text-muted-foreground">Grouped by layer, with the depth I bring to each.</p>
+        </div>
+        <div class="skills-3d-scene-grid stagger-group grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Card 0: Languages -->
+            <div class="skill-card-scene" data-card-index="0">
+                <div class="skill-card-shadow" aria-hidden="true"></div>
+                <div class="surface-card skill-card-3d p-6" tabindex="0" role="region" aria-label="Languages skill card">
+                    <div class="card-specular-light" aria-hidden="true"></div>
+                    <div class="card-glass-sheen" aria-hidden="true"></div>
+                    <div class="card-border-glow" aria-hidden="true"></div>
+                    
+                    <div class="card-layer card-header-layer flex items-center gap-3">
+                        <span class="icon-tile h-10 w-10">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 17l6-5-6-5M12 19h8"/></svg>
+                        </span>
+                        <h3 class="text-base font-semibold">Languages</h3>
+                    </div>
+                    <div class="card-layer card-meter-layer meter mt-5"><span data-level="88"><span class="meter-energy-pulse" aria-hidden="true"></span></span></div>
+                    <ul class="card-layer card-badges-layer mt-5 flex flex-wrap gap-2">
+                        <li class="chip" data-badge-index="0">JavaScript (ES6+)</li>
+                        <li class="chip" data-badge-index="1">Python</li>
+                        <li class="chip" data-badge-index="2">HTML5</li>
+                        <li class="chip" data-badge-index="3">CSS3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 1: Frontend -->
+            <div class="skill-card-scene" data-card-index="1">
+                <div class="skill-card-shadow" aria-hidden="true"></div>
+                <div class="surface-card skill-card-3d p-6" tabindex="0" role="region" aria-label="Frontend skill card">
+                    <div class="card-specular-light" aria-hidden="true"></div>
+                    <div class="card-glass-sheen" aria-hidden="true"></div>
+                    <div class="card-border-glow" aria-hidden="true"></div>
+                    
+                    <div class="card-layer card-header-layer flex items-center gap-3">
+                        <span class="icon-tile h-10 w-10">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </span>
+                        <h3 class="text-base font-semibold">Frontend</h3>
+                    </div>
+                    <div class="card-layer card-meter-layer meter mt-5"><span data-level="92"><span class="meter-energy-pulse" aria-hidden="true"></span></span></div>
+                    <ul class="card-layer card-badges-layer mt-5 flex flex-wrap gap-2">
+                        <li class="chip" data-badge-index="0">Vue 3</li>
+                        <li class="chip" data-badge-index="1">Pinia</li>
+                        <li class="chip" data-badge-index="2">Tailwind CSS</li>
+                        <li class="chip" data-badge-index="3">Responsive Web Design</li>
+                        <li class="chip" data-badge-index="4">Reusable Component Architecture</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: Backend -->
+            <div class="skill-card-scene" data-card-index="2">
+                <div class="skill-card-shadow" aria-hidden="true"></div>
+                <div class="surface-card skill-card-3d p-6" tabindex="0" role="region" aria-label="Backend skill card">
+                    <div class="card-specular-light" aria-hidden="true"></div>
+                    <div class="card-glass-sheen" aria-hidden="true"></div>
+                    <div class="card-border-glow" aria-hidden="true"></div>
+                    
+                    <div class="card-layer card-header-layer flex items-center gap-3">
+                        <span class="icon-tile h-10 w-10">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></svg>
+                        </span>
+                        <h3 class="text-base font-semibold">Backend</h3>
+                    </div>
+                    <div class="card-layer card-meter-layer meter mt-5"><span data-level="90"><span class="meter-energy-pulse" aria-hidden="true"></span></span></div>
+                    <ul class="card-layer card-badges-layer mt-5 flex flex-wrap gap-2">
+                        <li class="chip" data-badge-index="0">Django</li>
+                        <li class="chip" data-badge-index="1">Django REST Framework</li>
+                        <li class="chip" data-badge-index="2">RESTful API design &amp; integration</li>
+                        <li class="chip" data-badge-index="3">JSON</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3: Databases -->
+            <div class="skill-card-scene" data-card-index="3">
+                <div class="skill-card-shadow" aria-hidden="true"></div>
+                <div class="surface-card skill-card-3d p-6" tabindex="0" role="region" aria-label="Databases skill card">
+                    <div class="card-specular-light" aria-hidden="true"></div>
+                    <div class="card-glass-sheen" aria-hidden="true"></div>
+                    <div class="card-border-glow" aria-hidden="true"></div>
+                    
+                    <div class="card-layer card-header-layer flex items-center gap-3">
+                        <span class="icon-tile h-10 w-10">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+                        </span>
+                        <h3 class="text-base font-semibold">Databases</h3>
+                    </div>
+                    <div class="card-layer card-meter-layer meter mt-5"><span data-level="82"><span class="meter-energy-pulse" aria-hidden="true"></span></span></div>
+                    <ul class="card-layer card-badges-layer mt-5 flex flex-wrap gap-2">
+                        <li class="chip" data-badge-index="0">MySQL (PyMySQL)</li>
+                        <li class="chip" data-badge-index="1">Relational DB &amp; SQL schema design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 4: Mobile -->
+            <div class="skill-card-scene" data-card-index="4">
+                <div class="skill-card-shadow" aria-hidden="true"></div>
+                <div class="surface-card skill-card-3d p-6" tabindex="0" role="region" aria-label="Mobile skill card">
+                    <div class="card-specular-light" aria-hidden="true"></div>
+                    <div class="card-glass-sheen" aria-hidden="true"></div>
+                    <div class="card-border-glow" aria-hidden="true"></div>
+                    
+                    <div class="card-layer card-header-layer flex items-center gap-3">
+                        <span class="icon-tile h-10 w-10">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+                        </span>
+                        <h3 class="text-base font-semibold">Mobile</h3>
+                    </div>
+                    <div class="card-layer card-meter-layer meter mt-5"><span data-level="70"><span class="meter-energy-pulse" aria-hidden="true"></span></span></div>
+                    <ul class="card-layer card-badges-layer mt-5 flex flex-wrap gap-2">
+                        <li class="chip" data-badge-index="0">React Native (Expo)</li>
+                        <li class="chip" data-badge-index="1">TypeScript</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 5: Tools & Practices -->
+            <div class="skill-card-scene" data-card-index="5">
+                <div class="skill-card-shadow" aria-hidden="true"></div>
+                <div class="surface-card skill-card-3d p-6" tabindex="0" role="region" aria-label="Tools and Practices skill card">
+                    <div class="card-specular-light" aria-hidden="true"></div>
+                    <div class="card-glass-sheen" aria-hidden="true"></div>
+                    <div class="card-border-glow" aria-hidden="true"></div>
+                    
+                    <div class="card-layer card-header-layer flex items-center gap-3">
+                        <span class="icon-tile h-10 w-10">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 105.6 5.6L21 21l-3-3-9-9 .1-.1a4 4 0 015.6-2.6z"/></svg>
+                        </span>
+                        <h3 class="text-base font-semibold">Tools &amp; Practices</h3>
+                    </div>
+                    <div class="card-layer card-meter-layer meter mt-5"><span data-level="85"><span class="meter-energy-pulse" aria-hidden="true"></span></span></div>
+                    <ul class="card-layer card-badges-layer mt-5 flex flex-wrap gap-2">
+                        <li class="chip" data-badge-index="0">Git &amp; GitHub</li>
+                        <li class="chip" data-badge-index="1">Debugging</li>
+                        <li class="chip" data-badge-index="2">Code reviews</li>
+                        <li class="chip" data-badge-index="3">CORS configuration</li>
+                        <li class="chip" data-badge-index="4">UI/UX principles</li>
+                        <li class="chip" data-badge-index="5">AI-assisted development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- ============================== PROJECTS ========================= -->
+    <section id="projects" class="bg-surface/40 pt-8 pb-24">
+        <div class="mx-auto max-w-6xl px-5 lg:px-8">
+        <div class="reveal mb-12 max-w-2xl">
+            <p class="eyebrow">Projects</p>
+            <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Featured work.</h2>
+        </div>
+        <div class="stagger-group grid gap-5 lg:grid-cols-2">
+            <article id="project-rasant" class="surface-card reveal group flex flex-col p-7 scroll-mt-24">
+            <div class="flex flex-wrap items-center gap-2">
+                <span
+                class="bg-gradient-accent rounded-full px-3 py-1 font-mono text-[0.65rem] text-primary-foreground"
+                >Professional</span
+                >
+                <span class="font-mono text-[0.68rem] text-muted-foreground">2026</span>
+            </div>
+            <h3 class="mt-5 text-xl font-semibold">Rasant Solutions — Company Admin Panel</h3>
+            <p class="mt-3 text-sm text-muted-foreground">
+                A full company admin panel covering payroll, attendance tracking, HR management and
+                Jira integration, plus a real-time chat module powered by Server-Sent Events with
+                caching, unread counts and read receipts.
+            </p>
+            <ul class="mt-6 flex flex-wrap gap-2">
+                <li class="chip">Vue 3</li>
+                <li class="chip">Pinia</li>
+                <li class="chip">Django REST Framework</li>
+                <li class="chip">MySQL</li>
+                <li class="chip">SSE</li>
+            </ul>
+            <a href="rasant-solutions.html" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                Explore Case Study
+                <svg class="h-4 w-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </a>
+            </article>
+
+            <article id="project-stationhub" class="surface-card reveal group flex flex-col p-7 scroll-mt-24">
+            <div class="flex flex-wrap items-center gap-2">
+                <span
+                class="bg-gradient-accent rounded-full px-3 py-1 font-mono text-[0.65rem] text-primary-foreground"
+                >Mobile</span
+                >
+                <span class="font-mono text-[0.68rem] text-muted-foreground">Personal Project</span>
+            </div>
+            <h3 class="mt-5 text-xl font-semibold">StationHub — Car Wash Booking App</h3>
+            <p class="mt-3 text-sm text-muted-foreground">
+                A mobile booking app for car wash stations with Firebase Authentication
+                (email/password and Google Sign-In), REST API integration and a scalable mobile app
+                architecture.
+            </p>
+            <ul class="mt-6 flex flex-wrap gap-2">
+                <li class="chip">React Native (Expo)</li>
+                <li class="chip">TypeScript</li>
+                <li class="chip">Firebase Auth</li>
+                <li class="chip">REST APIs</li>
+            </ul>
+            <a href="station-hub.html" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                Explore Case Study
+                <svg class="h-4 w-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </a>
+            </article>
+        </div>
+        </div>
+    </section>
+
+    <!-- ============================= EDUCATION ========================= -->
+    <section id="education" class="mx-auto max-w-6xl px-5 py-24 lg:px-8">
+        <div class="reveal mb-12 max-w-2xl">
+        <p class="eyebrow">Education</p>
+        <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Academics &amp; certifications.</h2>
+        </div>
+        <div class="grid gap-5 lg:grid-cols-2">
+        <div class="space-y-5">
+            <div class="surface-card reveal flex items-start gap-4 p-6">
+            <span class="icon-tile h-10 w-10">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg>
+            </span>
+            <div class="min-w-0">
+                <h3 class="text-base font-semibold">BS Software Engineering</h3>
+                <p class="text-sm text-muted-foreground">National University of Modern Languages</p>
+                <p class="mt-2 font-mono text-[0.68rem] text-primary">2022 — 2026 · CGPA 3.25/4.00</p>
+            </div>
+            </div>
+            <div class="surface-card reveal flex items-start gap-4 p-6">
+            <span class="icon-tile h-10 w-10">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg>
+            </span>
+            <div class="min-w-0">
+                <h3 class="text-base font-semibold">FSc Pre-Engineering</h3>
+                <p class="text-sm text-muted-foreground">Grade A1</p>
+                <p class="mt-2 font-mono text-[0.68rem] text-primary">2019 — 2021</p>
+            </div>
+            </div>
+        </div>
+        <div class="space-y-5">
+            <div class="surface-card reveal flex items-start gap-4 p-6">
+            <span class="icon-tile h-10 w-10">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 15l-2 6 5-3 5 3-2-6"/></svg>
+            </span>
+            <div class="min-w-0">
+                <h3 class="text-base font-semibold">React Basics</h3>
+                <p class="text-sm text-muted-foreground">Meta</p>
+                <p class="mt-2 font-mono text-[0.68rem] text-primary">2025</p>
+            </div>
+            </div>
+            <div class="surface-card reveal flex items-start gap-4 p-6">
+            <span class="icon-tile h-10 w-10">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 15l-2 6 5-3 5 3-2-6"/></svg>
+            </span>
+            <div class="min-w-0">
+                <h3 class="text-base font-semibold">Advanced Web Application Development</h3>
+                <p class="text-sm text-muted-foreground">NAVTTC, Government of Pakistan</p>
+                <p class="mt-2 font-mono text-[0.68rem] text-primary">2023</p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- ============================== CONTACT ========================== -->
+    <section id="contact" class="relative overflow-hidden bg-surface/40 py-24">
+        <div class="grid-lines absolute inset-0 opacity-50" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-6xl px-5 lg:px-8">
+        <div class="reveal mb-12 max-w-2xl">
+            <p class="eyebrow">Contact</p>
+            <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Let's Build Something Great</h2>
+            <p class="mt-4 text-muted-foreground">
+            Currently open to new opportunities — freelance, part-time or full-time.
+            </p>
+        </div>
+        <div class="stagger-group grid gap-5 md:grid-cols-3">
+            <a href="mailto:alihassancs13@gmail.com" class="surface-card reveal flex items-center gap-3 p-6">
+            <span class="icon-tile h-10 w-10">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
+            </span>
+            <span class="min-w-0">
+                <span class="block font-mono text-[0.65rem] tracking-widest text-muted-foreground uppercase">Email</span>
+                <span class="block truncate text-sm">alihassancs13@gmail.com</span>
+            </span>
+            </a>
+            <a href="tel:+923065047072" class="surface-card reveal flex items-center gap-3 p-6">
+            <span class="icon-tile h-10 w-10">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z"/></svg>
+            </span>
+            <span class="min-w-0">
+                <span class="block font-mono text-[0.65rem] tracking-widest text-muted-foreground uppercase">Phone</span>
+                <span class="block truncate text-sm">+92 306 5047072</span>
+            </span>
+            </a>
+            <div class="surface-card reveal flex items-center gap-3 p-6">
+            <span class="icon-tile h-10 w-10">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span class="min-w-0">
+                <span class="block font-mono text-[0.65rem] tracking-widest text-muted-foreground uppercase">Location</span>
+                <span class="block truncate text-sm">Islamabad, Pakistan</span>
+            </span>
+            </div>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+            <a href="mailto:alihassancs13@gmail.com" class="btn btn-primary">Email Ali</a>
+            <a href="tel:+923065047072" class="btn btn-outline">Call directly</a>
+        </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- ============================== FOOTER ============================= -->
+    <footer class="border-t border-border py-8">
+    <div
+        class="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 lg:px-8"
+    >
+        <p class="min-w-0 truncate font-mono text-xs text-muted-foreground">
+        © <span data-year>2026</span> Ali Hassan — Islamabad, Pakistan
+        </p>
+        <a href="#home" class="shrink-0 font-mono text-xs text-primary">Back to top ↑</a>
+    </div>
+    </footer>
+
+    <script src="fluid.js"></script>
+    <script src="script.js" defer></script>
+    <script src="about-particles.js" defer></script>
+    <script src="cinematic-3d.js" defer></script>
+</body>
+</html>

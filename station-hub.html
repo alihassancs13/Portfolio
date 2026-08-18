@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Station Hub — Mobile Car Wash Booking &amp; Fleet Platform | Ali Hassan</title>
+  <meta name="description" content="Case study on building the Station Hub cross-platform mobile booking app using React Native, TypeScript, Firebase Authentication, and REST APIs by Ali Hassan." />
+  <link rel="canonical" href="https://alihassan.dev/station-hub.html" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Design System Stylesheet -->
+  <link rel="stylesheet" href="projects.css" />
+</head>
+<body>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html#home" class="brand-link">
+        <span class="brand-badge">AH</span>
+        <div>
+          <span class="brand-name">Ali Hassan</span>
+          <span class="brand-role">Full-Stack Developer</span>
+        </div>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Project Navigation">
+        <a href="index.html#projects" class="nav-link">← All Projects</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="#modules" class="nav-link">Modules</a>
+        <a href="#features" class="nav-link">Deep Dive</a>
+        <a href="#tech-stack" class="nav-link">Tech Stack</a>
+        <a href="#challenges" class="nav-link">Challenges</a>
+        <a href="index.html#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- =============================== HERO ============================ -->
+    <section class="hero-section" id="overview">
+      <!-- Background Mesh and Glowing Orbs -->
+      <div class="hero-mesh" aria-hidden="true"></div>
+      <div class="glow-orb orb-1" aria-hidden="true"></div>
+      <div class="glow-orb orb-2" aria-hidden="true"></div>
+
+      <!-- Decorative Animated Side Grids -->
+      <div class="side-grid side-grid-left" aria-hidden="true">
+        <div class="grid-matrix">
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+        </div>
+      </div>
+
+      <div class="side-grid side-grid-right" aria-hidden="true">
+        <div class="grid-matrix">
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+          <div class="matrix-cell"></div><div class="matrix-cell"></div><div class="matrix-cell"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Hero Text -->
+          <div>
+            <span class="eyebrow-badge">Mobile Engineering</span>
+            <h1 class="hero-title">
+              Station Hub <br />
+              <span class="text-gradient">Car Wash Booking App</span>
+            </h1>
+            <p class="hero-desc">
+              A modern, cross-platform mobile application engineered with React Native (Expo), TypeScript, Firebase Authentication, and REST APIs. Features interactive station discovery, dynamic slot scheduling, real-time status tracking, and fleet vehicle management.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#features" class="btn btn-primary">Explore Features</a>
+              <a href="index.html#contact" class="btn btn-outline">Request Demo</a>
+            </div>
+
+            <!-- Metadata List -->
+            <dl class="hero-metadata">
+              <div class="meta-item">
+                <dt>Role</dt>
+                <dd>Mobile App Developer</dd>
+              </div>
+              <div class="meta-item">
+                <dt>Platform</dt>
+                <dd>iOS &amp; Android (Expo)</dd>
+              </div>
+              <div class="meta-item">
+                <dt>Category</dt>
+                <dd>Production Project</dd>
+              </div>
+              <div class="meta-item">
+                <dt>Primary Stack</dt>
+                <dd>React Native · TS · Firebase</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Hero Visual: Multi-ring Glowing Mobile Device Preview -->
+          <div class="hero-visual-wrapper">
+            <div class="visual-rings-container">
+              <div class="ring-inner"></div>
+              <div class="ring-outer"></div>
+              <div class="ring-glow"></div>
+
+              <div class="visual-mockup-card" style="max-width:320px;">
+                <div class="mockup-header">
+                  <span class="mockup-dot dot-red"></span>
+                  <span class="mockup-dot dot-yellow"></span>
+                  <span class="mockup-dot dot-green"></span>
+                  <span class="mockup-title-bar">StationHub Mobile / booking</span>
+                </div>
+                <div class="mockup-body">
+                  <div class="ui-visual-container">
+                    <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.85rem;">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                        <span style="font-family:var(--font-display); font-size:0.85rem; font-weight:700; color:var(--fg);">Express Ceramic Wash</span>
+                        <span style="color:#10b981; font-family:var(--font-mono); font-size:0.7rem; font-weight:600;">Confirmed</span>
+                      </div>
+                      <div style="font-size:0.75rem; color:var(--muted); margin-bottom:0.6rem;">
+                        📍 Downtown Station — Bay #3<br />
+                        ⏰ Today, 03:30 PM (45 mins)
+                      </div>
+                      <div style="background:color-mix(in oklab, var(--primary) 12%, transparent); border:1px solid color-mix(in oklab, var(--primary) 30%, transparent); border-radius:4px; padding:0.4rem 0.6rem; font-family:var(--font-mono); font-size:0.68rem; color:var(--primary); display:flex; justify-content:space-between;">
+                        <span>Progress: In Bay</span>
+                        <span>[2 / 3 Steps]</span>
+                      </div>
+                    </div>
+
+                    <div class="metric-pill-row">
+                      <div class="metric-mini-card">
+                        <span class="metric-mini-lbl">Auth Provider</span>
+                        <div class="metric-mini-val" style="font-size:0.9rem;">Firebase OAuth</div>
+                      </div>
+                      <div class="metric-mini-card">
+                        <span class="metric-mini-lbl">Slot Latency</span>
+                        <div class="metric-mini-val" style="font-size:0.9rem; color:var(--primary);">&lt; 120ms</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PLATFORM ARCHITECTURE ====================== -->
+    <section class="section section-alt" id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow-badge">Technical Pipeline</span>
+          <h2 class="section-title">Cross-Platform Mobile Architecture</h2>
+          <p class="section-desc">
+            A modular mobile application architecture integrating TypeScript safety, asynchronous state management, Firebase authentication, and resilient RESTful API endpoints.
+          </p>
+        </div>
+
+        <div class="arch-diagram-card">
+          <div class="arch-flow-grid">
+            <!-- Mobile Client Layer -->
+            <div class="arch-node">
+              <div class="arch-node-header">
+                <div class="arch-icon">📱</div>
+                <h3 class="arch-node-title">Mobile UI Tier</h3>
+              </div>
+              <ul class="arch-node-list">
+                <li>React Native (Expo SDK)</li>
+                <li>TypeScript Strict Typings</li>
+                <li>Custom Design Tokens</li>
+                <li>Context API State Management</li>
+                <li>Smooth Native Animations</li>
+              </ul>
+            </div>
+
+            <!-- Authentication Layer -->
+            <div class="arch-node">
+              <div class="arch-node-header">
+                <div class="arch-icon">🔒</div>
+                <h3 class="arch-node-title">Security &amp; Auth</h3>
+              </div>
+              <ul class="arch-node-list">
+                <li>Firebase Authentication</li>
+                <li>Google OAuth Sign-In</li>
+                <li>Email/Password Credential Store</li>
+                <li>AsyncStorage Token Persistence</li>
+                <li>Protected Screen Navigation</li>
+              </ul>
+            </div>
+
+            <!-- API & Logic Layer -->
+            <div class="arch-node">
+              <div class="arch-node-header">
+                <div class="arch-icon">⚡</div>
+                <h3 class="arch-node-title">REST API Services</h3>
+              </div>
+              <ul class="arch-node-list">
+                <li>Station Geolocation Lookup</li>
+                <li>Real-Time Slot Availability</li>
+                <li>Service Package Configuration</li>
+                <li>Booking Lifecycle Engine</li>
+                <li>Order History &amp; Receipts</li>
+              </ul>
+            </div>
+
+            <!-- Data & Offline Layer -->
+            <div class="arch-node">
+              <div class="arch-node-header">
+                <div class="arch-icon">💾</div>
+                <h3 class="arch-node-title">Storage &amp; Cache</h3>
+              </div>
+              <ul class="arch-node-list">
+                <li>Relational Backend Database</li>
+                <li>Client-Side Response Caching</li>
+                <li>Vehicle Profile Persistence</li>
+                <li>Network Resilience Handlers</li>
+                <li>Optimistic UI State Updates</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CORE MODULES GRID ======================= -->
+    <section class="section" id="modules">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow-badge">Application Modules</span>
+          <h2 class="section-title">Built for Seamless Driver &amp; Fleet Experience</h2>
+          <p class="section-desc">
+            Engineered around frictionless user journeys — from instant station discovery to slot scheduling, payment summary, and real-time bay status tracking.
+          </p>
+        </div>
+
+        <div class="modules-grid">
+          <a href="#feature-discovery" class="module-card">
+            <div class="module-icon-box">📍</div>
+            <div class="module-name">Station Discovery</div>
+            <div class="module-sub">Location filtering &amp; station profiles</div>
+          </a>
+
+          <a href="#feature-scheduler" class="module-card">
+            <div class="module-icon-box">📅</div>
+            <div class="module-name">Slot Scheduling</div>
+            <div class="module-sub">Live capacity &amp; time allocation</div>
+          </a>
+
+          <a href="#feature-auth" class="module-card">
+            <div class="module-icon-box">🛡️</div>
+            <div class="module-name">Firebase Auth &amp; Fleet</div>
+            <div class="module-sub">Google sign-in &amp; saved vehicles</div>
+          </a>
+
+          <a href="#feature-tracking" class="module-card">
+            <div class="module-icon-box">🔄</div>
+            <div class="module-name">Live Status Tracker</div>
+            <div class="module-sub">Real-time bay progress indicators</div>
+          </a>
+
+          <a href="#feature-services" class="module-card">
+            <div class="module-icon-box">✨</div>
+            <div class="module-name">Service Catalog</div>
+            <div class="module-sub">Detailing tiers &amp; custom add-ons</div>
+          </a>
+
+          <a href="#feature-reviews" class="module-card">
+            <div class="module-icon-box">⭐</div>
+            <div class="module-name">Feedback &amp; History</div>
+            <div class="module-sub">Verified ratings &amp; digital receipts</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DEEP DIVE FEATURE SHOWCASES =================== -->
+    <section class="section section-alt" id="features">
+      <div class="container">
+
+        <!-- 01 — Station Discovery -->
+        <div class="feature-showcase-row" id="feature-discovery">
+          <div class="feature-content">
+            <span class="section-number">01</span>
+            <span class="eyebrow-badge">Location Intelligence</span>
+            <h2 class="feature-heading">Interactive Station Discovery &amp; Filters</h2>
+            <p class="feature-desc">
+              Enables drivers to quickly discover operating car wash stations, view distance metrics, compare pricing tiers, check operating hours, and verify current bay capacity before reserving.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔍</div>
+                <div>
+                  <h3 class="point-title">Location &amp; Service Filtering</h3>
+                  <p class="point-desc">Filter stations by distance, automated tunnel vs. hand detailing, eco-friendly wash, and high-clearance van bays.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🏷️</div>
+                <div>
+                  <h3 class="point-title">Dynamic Station Profiles</h3>
+                  <p class="point-desc">Rich station pages with operational hours, customer ratings, available bays, and localized promotions.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">⚡</div>
+                <div>
+                  <h3 class="point-title">Fast Cached Querying</h3>
+                  <p class="point-desc">Station catalogs are pre-fetched and cached locally on device to ensure instantaneous navigation.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="mockup-frame">
+              <div class="mockup-header">
+                <span class="mockup-dot dot-red"></span>
+                <span class="mockup-dot dot-yellow"></span>
+                <span class="mockup-dot dot-green"></span>
+                <span class="mockup-title-bar">screens / StationListScreen.tsx</span>
+              </div>
+              <div class="mockup-body">
+                <div class="code-preview">
+<span style="color:var(--primary);">interface</span> Station {
+  id: <span style="color:var(--accent);">string</span>;
+  name: <span style="color:var(--accent);">string</span>;
+  distanceKm: <span style="color:var(--accent);">number</span>;
+  availableBays: <span style="color:var(--accent);">number</span>;
+  rating: <span style="color:var(--accent);">number</span>;
+}
+
+<span style="color:var(--primary);">export const</span> <span style="color:var(--accent);">useNearbyStations</span> = (userCoords: Coordinates) => {
+  <span style="color:var(--primary);">const</span> [stations, setStations] = useState&lt;Station[]&gt;([]);
+  <span style="color:var(--muted-dark);">// Query REST API with distance sorting</span>
+  <span style="color:var(--accent);">useEffect</span>(() => {
+    stationApi.getNearby(userCoords).then(res => setStations(res.data));
+  }, [userCoords]);
+  <span style="color:var(--primary);">return</span> { stations };
+};
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 — Slot Scheduling -->
+        <div class="feature-showcase-row row-reverse" id="feature-scheduler">
+          <div class="feature-content">
+            <span class="section-number">02</span>
+            <span class="eyebrow-badge">Booking Engine</span>
+            <h2 class="feature-heading">Real-Time Slot Scheduling Grid</h2>
+            <p class="feature-desc">
+              An interactive time-slot picker that dynamically queries available wash bays, calculates service duration buffers, and locks selected windows to prevent double booking.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">⏰</div>
+                <div>
+                  <h3 class="point-title">Dynamic Time Slot Matrix</h3>
+                  <p class="point-desc">Select convenient 30, 45, or 60-minute service windows based on chosen detailing packages.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🚫</div>
+                <div>
+                  <h3 class="point-title">Double-Booking Prevention</h3>
+                  <p class="point-desc">Backend slot validation engine reserves the temporary window during checkout to ensure zero scheduling conflicts.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🚗</div>
+                <div>
+                  <h3 class="point-title">Multi-Vehicle Vehicle Select</h3>
+                  <p class="point-desc">Instantly pair appointments with saved garage vehicles (Sedan, SUV, Pickup, Motorcycle) with price adjustment.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="mockup-frame">
+              <div class="mockup-header">
+                <span class="mockup-dot dot-red"></span>
+                <span class="mockup-dot dot-yellow"></span>
+                <span class="mockup-dot dot-green"></span>
+                <span class="mockup-title-bar">components / SlotPicker.tsx</span>
+              </div>
+              <div class="mockup-body">
+                <div class="ui-visual-container">
+                  <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--fg); font-weight:600; margin-bottom:0.25rem;">
+                    Available Time Slots — Today
+                  </div>
+                  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem; font-family:var(--font-mono); font-size:0.72rem;">
+                    <div style="background:color-mix(in oklab, var(--primary) 20%, transparent); border:1px solid var(--primary); color:var(--primary); padding:0.6rem; text-align:center; border-radius:6px; font-weight:600;">
+                      02:00 PM<br /><span style="font-size:0.6rem;">Selected</span>
+                    </div>
+                    <div style="background:var(--surface); border:1px solid var(--border); color:var(--fg); padding:0.6rem; text-align:center; border-radius:6px;">
+                      02:45 PM<br /><span style="font-size:0.6rem; color:#10b981;">2 Bays Open</span>
+                    </div>
+                    <div style="background:var(--surface); border:1px solid var(--border); color:var(--muted-dark); padding:0.6rem; text-align:center; border-radius:6px; opacity:0.5;">
+                      03:30 PM<br /><span style="font-size:0.6rem; color:#ef4444;">Booked</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 — Firebase Auth & Fleet Profile -->
+        <div class="feature-showcase-row" id="feature-auth">
+          <div class="feature-content">
+            <span class="section-number">03</span>
+            <span class="eyebrow-badge">Identity &amp; Profile</span>
+            <h2 class="feature-heading">Firebase Authentication &amp; Fleet Management</h2>
+            <p class="feature-desc">
+              Streamlined onboarding featuring Google OAuth and email/password credentials with secure local session persistence, coupled with a full multi-vehicle garage management screen.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔑</div>
+                <div>
+                  <h3 class="point-title">One-Tap Social &amp; Email Sign-In</h3>
+                  <p class="point-desc">Firebase Authentication manages tokens securely with automatic refresh loops across mobile application restarts.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🚘</div>
+                <div>
+                  <h3 class="point-title">Virtual Vehicle Garage</h3>
+                  <p class="point-desc">Save multiple vehicles with make, model, license plate, and color for quick one-tap booking.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔐</div>
+                <div>
+                  <h3 class="point-title">Secure Credential Storage</h3>
+                  <p class="point-desc">User tokens and profile preferences stored using encrypted device storage adapters.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="mockup-frame">
+              <div class="mockup-header">
+                <span class="mockup-dot dot-red"></span>
+                <span class="mockup-dot dot-yellow"></span>
+                <span class="mockup-dot dot-green"></span>
+                <span class="mockup-title-bar">services / firebaseAuth.ts</span>
+              </div>
+              <div class="mockup-body">
+                <div class="code-preview">
+<span style="color:var(--primary);">export const</span> <span style="color:var(--accent);">handleGoogleLogin</span> = <span style="color:var(--primary);">async</span> () => {
+  <span style="color:var(--primary);">try</span> {
+    <span style="color:var(--primary);">const</span> credential = <span style="color:var(--accent);">await</span> GoogleAuthProvider.credential(idToken);
+    <span style="color:var(--primary);">const</span> userAuth = <span style="color:var(--accent);">await</span> signInWithCredential(auth, credential);
+    <span style="color:var(--accent);">await</span> AsyncStorage.setItem(<span style="color:#10b981;">'@auth_token'</span>, userAuth.user.uid);
+    <span style="color:var(--primary);">return</span> { user: userAuth.user };
+  } <span style="color:var(--primary);">catch</span> (err) {
+    console.error(<span style="color:#ef4444;">'OAuth failure'</span>, err);
+  }
+};
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 — Order Lifecycle & Tracking -->
+        <div class="feature-showcase-row row-reverse" id="feature-tracking">
+          <div class="feature-content">
+            <span class="section-number">04</span>
+            <span class="eyebrow-badge">Live Operations</span>
+            <h2 class="feature-heading">Real-Time Order Lifecycle Tracking</h2>
+            <p class="feature-desc">
+              Drivers watch their vehicle's wash status progress through verified stages — from booking confirmed, vehicle checked in, washing in progress, to detailing complete and ready for pickup.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📡</div>
+                <div>
+                  <h3 class="point-title">Live Stage Stepper Indicator</h3>
+                  <p class="point-desc">Animated visual progression stepper updating automatically as station operators update ticket states.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🧾</div>
+                <div>
+                  <h3 class="point-title">Digital Service Receipt</h3>
+                  <p class="point-desc">Itemized pricing summary, applied promo discounts, station address, and QR check-in code stored on device.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔔</div>
+                <div>
+                  <h3 class="point-title">Actionable Bay Completion Alerts</h3>
+                  <p class="point-desc">Notifies customers the exact moment their vehicle exits the drying bay and is ready for pickup.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="mockup-frame">
+              <div class="mockup-header">
+                <span class="mockup-dot dot-red"></span>
+                <span class="mockup-dot dot-yellow"></span>
+                <span class="mockup-dot dot-green"></span>
+                <span class="mockup-title-bar">components / OrderStatusTracker.tsx</span>
+              </div>
+              <div class="mockup-body">
+                <div class="ui-visual-container">
+                  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.75rem;">
+                      <span style="width:1.25rem; height:1.25rem; border-radius:9999px; background:#10b981; color:#fff; display:grid; place-items:center; font-size:0.65rem;">✓</span>
+                      <div>
+                        <span style="font-weight:600; color:var(--fg);">1. Booking Confirmed</span>
+                        <div style="color:var(--muted); font-size:0.65rem;">Slot reserved at Downtown Bay #3</div>
+                      </div>
+                    </div>
+
+                    <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.75rem;">
+                      <span style="width:1.25rem; height:1.25rem; border-radius:9999px; background:var(--primary); color:var(--primary-fg); display:grid; place-items:center; font-size:0.65rem;">●</span>
+                      <div>
+                        <span style="font-weight:600; color:var(--primary);">2. Washing &amp; Underbody Rinse</span>
+                        <div style="color:var(--muted); font-size:0.65rem;">Estimated completion in 12 mins</div>
+                      </div>
+                    </div>
+
+                    <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.75rem; opacity:0.5;">
+                      <span style="width:1.25rem; height:1.25rem; border-radius:9999px; background:var(--border); color:var(--muted); display:grid; place-items:center; font-size:0.65rem;">3</span>
+                      <div>
+                        <span style="font-weight:600; color:var(--muted);">3. Hand Polish &amp; Pickup Ready</span>
+                        <div style="color:var(--muted-dark); font-size:0.65rem;">Pending wash cycle completion</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== TECHNOLOGY STACK ========================== -->
+    <section class="section" id="tech-stack">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow-badge">Mobile Engineering Stack</span>
+          <h2 class="section-title">Technical Stack &amp; Tools</h2>
+          <p class="section-desc">
+            Built using industry-standard cross-platform mobile frameworks, TypeScript strict typing, and robust cloud services.
+          </p>
+        </div>
+
+        <div class="tech-stack-container">
+          <div class="tech-group-card">
+            <h3 class="tech-group-title">📱 Mobile Architecture</h3>
+            <div class="tech-badge-wrap">
+              <span class="tech-badge">React Native</span>
+              <span class="tech-badge">Expo SDK</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">React Hooks</span>
+              <span class="tech-badge">Context API</span>
+              <span class="tech-badge">React Navigation</span>
+            </div>
+          </div>
+
+          <div class="tech-group-card">
+            <h3 class="tech-group-title">🔒 Identity &amp; APIs</h3>
+            <div class="tech-badge-wrap">
+              <span class="tech-badge">Firebase Auth</span>
+              <span class="tech-badge">Google OAuth</span>
+              <span class="tech-badge">REST APIs</span>
+              <span class="tech-badge">JSON Formats</span>
+              <span class="tech-badge">Axios Client</span>
+              <span class="tech-badge">AsyncStorage</span>
+            </div>
+          </div>
+
+          <div class="tech-group-card">
+            <h3 class="tech-group-title">🎨 UI/UX &amp; Styling</h3>
+            <div class="tech-badge-wrap">
+              <span class="tech-badge">StyleSheet API</span>
+              <span class="tech-badge">Responsive Flexbox</span>
+              <span class="tech-badge">Custom Typography</span>
+              <span class="tech-badge">Vector Icons</span>
+              <span class="tech-badge">Dark Theme Tokens</span>
+            </div>
+          </div>
+
+          <div class="tech-group-card">
+            <h3 class="tech-group-title">🛠️ Tools &amp; Workflow</h3>
+            <div class="tech-badge-wrap">
+              <span class="tech-badge">Git &amp; GitHub</span>
+              <span class="tech-badge">Expo Go</span>
+              <span class="tech-badge">Android Studio Emulators</span>
+              <span class="tech-badge">iOS Simulator</span>
+              <span class="tech-badge">ESLint &amp; Prettier</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== CHALLENGES & SOLUTIONS ======================= -->
+    <section class="section section-alt" id="challenges">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow-badge">Engineering Problem Solving</span>
+          <h2 class="section-title">Key Challenges &amp; Technical Solutions</h2>
+          <p class="section-desc">
+            Technical bottlenecks resolved during the cross-platform development lifecycle.
+          </p>
+        </div>
+
+        <div class="challenge-solution-grid">
+          <div class="cs-card">
+            <span class="cs-tag">01 · Cross-Platform Typography &amp; Sizing</span>
+            <p class="cs-problem">Challenge: Layout shift and text clipping occurred when rendering custom font metrics across varying Android and iOS pixel densities.</p>
+            <p class="cs-solution">Solution: Engineered a centralized responsive scaling utility using `PixelRatio.roundToNearestPixel()` and standardized design tokens for padding, font sizes, and card borders.</p>
+          </div>
+
+          <div class="cs-card">
+            <span class="cs-tag">02 · Slot Concurrency &amp; Race Conditions</span>
+            <p class="cs-problem">Challenge: Multiple users selecting the same high-demand weekend wash slot simultaneously caused validation errors at final submission.</p>
+            <p class="cs-solution">Solution: Implemented temporary slot reservations with a 5-minute checkout countdown, alongside optimistic UI updates and immediate slot lock polling.</p>
+          </div>
+
+          <div class="cs-card">
+            <span class="cs-tag">03 · Firebase Session Resilience</span>
+            <p class="cs-problem">Challenge: Native app process kills by the mobile OS caused intermittent credential drops and unnecessary login prompts on relaunch.</p>
+            <p class="cs-solution">Solution: Integrated `onAuthStateChanged` listeners connected to encrypted local storage to silently hydrate user credentials before screen mounting.</p>
+          </div>
+
+          <div class="cs-card">
+            <span class="cs-tag">04 · Offline Network State Handling</span>
+            <p class="cs-problem">Challenge: Intermittent cellular connectivity while driving near stations resulted in frozen network loaders.</p>
+            <p class="cs-solution">Solution: Built NetInfo listeners with informative offline status banners, local station cache fallback, and retry queues for network operations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== DEVELOPER RESPONSIBILITIES =================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow-badge">My Contribution</span>
+          <h2 class="section-title">Key Responsibilities &amp; Delivery</h2>
+          <p class="section-desc">
+            Owned the mobile product lifecycle from design concept and component architecture to API integration and native testing.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <h3 class="benefit-title">Cross-Platform Architecture</h3>
+            <p class="benefit-desc">Structured the React Native Expo app with TypeScript, separating screens, navigation stacks, services, and reusable presentation components.</p>
+          </div>
+
+          <div class="benefit-card">
+            <h3 class="benefit-title">Firebase Auth &amp; Security</h3>
+            <p class="benefit-desc">Configured Google Sign-In, Email/Password credential verification, secure session tokens, and route guards for authenticated screens.</p>
+          </div>
+
+          <div class="benefit-card">
+            <h3 class="benefit-title">REST API Integration</h3>
+            <p class="benefit-desc">Connected mobile clients with backend RESTful endpoints to query stations, reserve slots, save vehicle fleets, and fetch order history.</p>
+          </div>
+
+          <div class="benefit-card">
+            <h3 class="benefit-title">Mobile UI/UX Design</h3>
+            <p class="benefit-desc">Crafted fluid mobile interfaces with intuitive booking funnels, interactive slot selectors, status trackers, and dark glassmorphic styling.</p>
+          </div>
+
+          <div class="benefit-card">
+            <h3 class="benefit-title">State Management &amp; Cache</h3>
+            <p class="benefit-desc">Implemented Context API state stores with local persistence, reducing duplicate network queries and accelerating app launch time.</p>
+          </div>
+
+          <div class="benefit-card">
+            <h3 class="benefit-title">Native Device Testing</h3>
+            <p class="benefit-desc">Tested across multiple Android emulators and iOS devices, validating touch responsiveness, edge-to-edge layouts, and hardware back button handling.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= CTA =============================== -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-text-content">
+            <h2 class="cta-title">Looking for a Mobile or Full-Stack Engineer?</h2>
+            <p class="cta-desc">
+              I build high-performance mobile apps with React Native and scalable web platforms with Vue 3 and Django. Let's create something exceptional together.
+            </p>
+          </div>
+          <div class="cta-buttons">
+            <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="index.html#projects" class="btn btn-outline">← Back to Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================= FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html#home" class="footer-link">Home</a>
+        <a href="index.html#about" class="footer-link">About</a>
+        <a href="index.html#skills" class="footer-link">Skills</a>
+        <a href="index.html#projects" class="footer-link">Projects</a>
+        <a href="rasant-solutions.html" class="footer-link">Rasant Solutions Case Study</a>
+        <a href="index.html#contact" class="footer-link">Contact</a>
+      </div>
+      <p>© 2026 Ali Hassan. Built with semantic HTML5 &amp; pure CSS3.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
