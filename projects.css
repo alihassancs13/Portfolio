@@ -1080,3 +1080,119 @@ p {
   35% { transform: translateX(250%) skewX(-20deg); }
   100% { transform: translateX(250%) skewX(-20deg); }
 }
+
+@media (max-width: 860px) {
+  .header-inner {
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+  }
+
+  .brand-link {
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-size: 0.85rem;
+  }
+
+  .brand-role {
+    display: none; /* "Full-Stack Developer" chhupa do, jagah bachao */
+  }
+
+  .nav-desktop {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    gap: 1rem;
+    mask-image: linear-gradient(90deg, transparent, black 12px, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 12px, black 92%, transparent);
+  }
+
+  .nav-desktop::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link,
+  .btn-sm {
+    white-space: nowrap;
+  }
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-white);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.hamburger-bar {
+  width: 1.1rem;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--fg);
+  border-radius: 9999px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.menu-toggle.is-open .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.is-open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.is-open .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 860px) {
+  .brand-role {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-desktop {
+    position: fixed;
+    top: 4.25rem;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    background: color-mix(in oklab, var(--bg) 96%, transparent);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: max-height 0.35s ease;
+  }
+
+  .nav-desktop.is-open {
+    max-height: 26rem;
+  }
+
+  .nav-desktop .nav-link,
+  .nav-desktop .btn-sm {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    border-radius: 0;
+  }
+
+  .nav-desktop .btn-sm {
+    justify-content: flex-start;
+    background: none;
+    box-shadow: none;
+    color: var(--primary);
+  }
+}
