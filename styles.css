@@ -389,8 +389,8 @@ a {
   position: absolute;
   border-radius: 9999px;
   background: var(--primary);
-  filter: blur(120px);
-  opacity: 0.16;
+  filter: blur(100px);
+opacity: 0.22;
   pointer-events: none;
   animation: orb-float 12s ease-in-out infinite;
 }

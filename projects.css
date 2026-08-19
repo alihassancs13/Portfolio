@@ -89,7 +89,7 @@ p {
 /* ---------------------------- Container --------------------------------- */
 .container {
   width: 100%;
-  max-width: 1160px;
+  max-width: 1329px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
@@ -441,9 +441,9 @@ p {
 
 .visual-rings-container {
   position: relative;
-  width: min(380px, 85vw);
-  aspect-ratio: 1 / 1;
-  display: flex;
+  width: fit-content;
+  height: fit-content;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }

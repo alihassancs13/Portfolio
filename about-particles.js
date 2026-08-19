@@ -37,10 +37,12 @@
     // Radius profile along the vertical axis (t: 0 top -> 1 bottom).
     // Wide at the top, pinches in around the lower-third, slight flare
     // at the very bottom — the "hourglass / vortex" silhouette.
+    // Floor raised (0.14 -> 0.24) so the pinch never collapses to a thin
+    // sliver — that collapse was reading as "dead space" on the sides.
     function radiusProfile(t) {
       var pinchAt = 0.62;
       var d = Math.abs(t - pinchAt);
-      return 0.14 + 0.86 * Math.pow(d / Math.max(pinchAt, 1 - pinchAt), 1.5);
+      return 0.24 + 0.76 * Math.pow(d / Math.max(pinchAt, 1 - pinchAt), 1.5);
     }
 
     function makeParticle() {
@@ -120,7 +122,10 @@
       var cx = width * 0.5;
       var topPad = height * 0.01;
       var drawHeight = height * 0.98;
-      var maxRadius = Math.min(width, height) * 0.34;
+      // maxRadius now leans on width, not min(width, height): the container
+      // is portrait (tall, narrower), so basing spread on height alone left
+      // a visible gutter on the left and right edges.
+      var maxRadius = Math.min(width * 0.62, height * 0.42);
       var focal = 480;
 
       // scroll drives the bulk of the 3D turn; idle drift + pointer add a
@@ -151,7 +156,10 @@
         var y = topPad + t * drawHeight + scrollDriftY + pointerTiltY * 40 * (t - 0.5);
 
         var scale = focal / (focal - z);
-        var screenX = cx + x * scale * 0.55;
+        // Horizontal fill factor raised from 0.55 -> 0.92: the old value
+        // compressed the whole shape into ~55% of the box's width, which
+        // is what read as empty margins on the left and right.
+        var screenX = cx + x * scale * 0.92;
         var screenY = y;
 
         var edgeFade = Math.min(1, t / 0.03) * Math.min(1, (1 - t) / 0.03 + 0.4);

@@ -116,43 +116,11 @@
               <div class="ring-outer"></div>
               <div class="ring-glow"></div>
 
-              <div class="visual-mockup-card" style="max-width:320px;">
-                <div class="mockup-header">
-                  <span class="mockup-dot dot-red"></span>
-                  <span class="mockup-dot dot-yellow"></span>
-                  <span class="mockup-dot dot-green"></span>
-                  <span class="mockup-title-bar">StationHub Mobile / booking</span>
-                </div>
-                <div class="mockup-body">
-                  <div class="ui-visual-container">
-                    <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.85rem;">
-                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-                        <span style="font-family:var(--font-display); font-size:0.85rem; font-weight:700; color:var(--fg);">Express Ceramic Wash</span>
-                        <span style="color:#10b981; font-family:var(--font-mono); font-size:0.7rem; font-weight:600;">Confirmed</span>
-                      </div>
-                      <div style="font-size:0.75rem; color:var(--muted); margin-bottom:0.6rem;">
-                        📍 Downtown Station — Bay #3<br />
-                        ⏰ Today, 03:30 PM (45 mins)
-                      </div>
-                      <div style="background:color-mix(in oklab, var(--primary) 12%, transparent); border:1px solid color-mix(in oklab, var(--primary) 30%, transparent); border-radius:4px; padding:0.4rem 0.6rem; font-family:var(--font-mono); font-size:0.68rem; color:var(--primary); display:flex; justify-content:space-between;">
-                        <span>Progress: In Bay</span>
-                        <span>[2 / 3 Steps]</span>
-                      </div>
-                    </div>
-
-                    <div class="metric-pill-row">
-                      <div class="metric-mini-card">
-                        <span class="metric-mini-lbl">Auth Provider</span>
-                        <div class="metric-mini-val" style="font-size:0.9rem;">Firebase OAuth</div>
-                      </div>
-                      <div class="metric-mini-card">
-                        <span class="metric-mini-lbl">Slot Latency</span>
-                        <div class="metric-mini-val" style="font-size:0.9rem; color:var(--primary);">&lt; 120ms</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img
+                src="./assests/screenshots/splash-screen.png"
+                alt="Station Hub app splash screen with logo and loading indicator"
+                style="max-width:280px; width:100%; display:block; border-radius:32px; box-shadow:0 30px 70px rgba(0,0,0,0.4);"
+              />
             </div>
           </div>
         </div>
@@ -354,35 +322,12 @@
             </ul>
           </div>
 
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">screens / StationListScreen.tsx</span>
-              </div>
-              <div class="mockup-body">
-                <div class="code-preview">
-<span style="color:var(--primary);">interface</span> Station {
-  id: <span style="color:var(--accent);">string</span>;
-  name: <span style="color:var(--accent);">string</span>;
-  distanceKm: <span style="color:var(--accent);">number</span>;
-  availableBays: <span style="color:var(--accent);">number</span>;
-  rating: <span style="color:var(--accent);">number</span>;
-}
-
-<span style="color:var(--primary);">export const</span> <span style="color:var(--accent);">useNearbyStations</span> = (userCoords: Coordinates) => {
-  <span style="color:var(--primary);">const</span> [stations, setStations] = useState&lt;Station[]&gt;([]);
-  <span style="color:var(--muted-dark);">// Query REST API with distance sorting</span>
-  <span style="color:var(--accent);">useEffect</span>(() => {
-    stationApi.getNearby(userCoords).then(res => setStations(res.data));
-  }, [userCoords]);
-  <span style="color:var(--primary);">return</span> { stations };
-};
-                </div>
-              </div>
-            </div>
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/home-discovery.png"
+              alt="Station Hub home screen showing nearby stations, category filters, and a promotional offer"
+              style="max-width:260px; width:100%; border-radius:26px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
           </div>
         </div>
 
@@ -420,33 +365,17 @@
             </ul>
           </div>
 
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">components / SlotPicker.tsx</span>
-              </div>
-              <div class="mockup-body">
-                <div class="ui-visual-container">
-                  <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--fg); font-weight:600; margin-bottom:0.25rem;">
-                    Available Time Slots — Today
-                  </div>
-                  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem; font-family:var(--font-mono); font-size:0.72rem;">
-                    <div style="background:color-mix(in oklab, var(--primary) 20%, transparent); border:1px solid var(--primary); color:var(--primary); padding:0.6rem; text-align:center; border-radius:6px; font-weight:600;">
-                      02:00 PM<br /><span style="font-size:0.6rem;">Selected</span>
-                    </div>
-                    <div style="background:var(--surface); border:1px solid var(--border); color:var(--fg); padding:0.6rem; text-align:center; border-radius:6px;">
-                      02:45 PM<br /><span style="font-size:0.6rem; color:#10b981;">2 Bays Open</span>
-                    </div>
-                    <div style="background:var(--surface); border:1px solid var(--border); color:var(--muted-dark); padding:0.6rem; text-align:center; border-radius:6px; opacity:0.5;">
-                      03:30 PM<br /><span style="font-size:0.6rem; color:#ef4444;">Booked</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+            <img
+              src="./assests/screenshots/book-wash-station-date.png"
+              alt="Book Your Wash screen — station selected, service type and date picker"
+              style="max-width:220px; width:100%; border-radius:24px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+            <img
+              src="./assests/screenshots/book-wash-time-vehicle-price.png"
+              alt="Book Your Wash screen — time slot, vehicle details and price summary"
+              style="max-width:220px; width:100%; border-radius:24px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
           </div>
         </div>
 
@@ -484,104 +413,98 @@
             </ul>
           </div>
 
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">services / firebaseAuth.ts</span>
-              </div>
-              <div class="mockup-body">
-                <div class="code-preview">
-<span style="color:var(--primary);">export const</span> <span style="color:var(--accent);">handleGoogleLogin</span> = <span style="color:var(--primary);">async</span> () => {
-  <span style="color:var(--primary);">try</span> {
-    <span style="color:var(--primary);">const</span> credential = <span style="color:var(--accent);">await</span> GoogleAuthProvider.credential(idToken);
-    <span style="color:var(--primary);">const</span> userAuth = <span style="color:var(--accent);">await</span> signInWithCredential(auth, credential);
-    <span style="color:var(--accent);">await</span> AsyncStorage.setItem(<span style="color:#10b981;">'@auth_token'</span>, userAuth.user.uid);
-    <span style="color:var(--primary);">return</span> { user: userAuth.user };
-  } <span style="color:var(--primary);">catch</span> (err) {
-    console.error(<span style="color:#ef4444;">'OAuth failure'</span>, err);
-  }
-};
-                </div>
-              </div>
-            </div>
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/login-screen.png"
+              alt="Station Hub login screen with email/password fields and Google &amp; Apple sign-in options"
+              style="max-width:260px; width:100%; border-radius:26px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
           </div>
         </div>
 
-        <!-- 04 — Order Lifecycle & Tracking -->
-        <div class="feature-showcase-row row-reverse" id="feature-tracking">
+        <!-- 04 — Booking History & Order Management -->
+<div class="feature-showcase-row row-reverse" id="feature-tracking">
+  <div class="feature-content">
+    <span class="section-number">04</span>
+    <span class="eyebrow-badge">Live Operations</span>
+    <h2 class="feature-heading">Booking History &amp; Order Management</h2>
+    <p class="feature-desc">
+      Drivers track every booking — upcoming, completed, or cancelled — in one organized view, with a live countdown on active bookings and one-tap cancellation before the slot locks in.
+    </p>
+    <ul class="feature-points-list">
+      <li class="feature-point-item">
+        <div class="point-icon-tile">📡</div>
+        <div>
+          <h3 class="point-title">Tabbed Status Filtering</h3>
+          <p class="point-desc">Up-Coming, Completed, and Cancel tabs let drivers instantly filter their full booking history.</p>
+        </div>
+      </li>
+      <li class="feature-point-item">
+        <div class="point-icon-tile">🧾</div>
+        <div>
+          <h3 class="point-title">Itemized Booking Cards</h3>
+          <p class="point-desc">Each card shows service package, vehicle, station, scheduled date/time, and total payment at a glance.</p>
+        </div>
+      </li>
+      <li class="feature-point-item">
+        <div class="point-icon-tile">🔔</div>
+        <div>
+          <h3 class="point-title">Live Countdown &amp; Cancellation</h3>
+          <p class="point-desc">A live "hours left" countdown on upcoming bookings, with a one-tap cancel action before the appointment window closes.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div style="display:flex; justify-content:center;">
+    <img
+      src="./assests/screenshots/booking-history.png"
+      alt="Station Hub booking history screen with Up-Coming, Completed, and Cancel tabs showing itemized bookings"
+      style="max-width:260px; width:100%; border-radius:26px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+    />
+  </div>
+</div>
+
+        <!-- 05 — Service Catalog -->
+        <div class="feature-showcase-row" id="feature-services">
           <div class="feature-content">
-            <span class="section-number">04</span>
-            <span class="eyebrow-badge">Live Operations</span>
-            <h2 class="feature-heading">Real-Time Order Lifecycle Tracking</h2>
+            <span class="section-number">05</span>
+            <span class="eyebrow-badge">Service Menu</span>
+            <h2 class="feature-heading">Premium Service Catalog &amp; Instant Scheduling</h2>
             <p class="feature-desc">
-              Drivers watch their vehicle's wash status progress through verified stages — from booking confirmed, vehicle checked in, washing in progress, to detailing complete and ready for pickup.
+              A tabbed service catalog (Basic / Premium / Add-ons) lets drivers browse detailing packages with pricing, ratings, and estimated duration up front, then jump straight into scheduling from the listing.
             </p>
             <ul class="feature-points-list">
               <li class="feature-point-item">
-                <div class="point-icon-tile">📡</div>
+                <div class="point-icon-tile">🗂️</div>
                 <div>
-                  <h3 class="point-title">Live Stage Stepper Indicator</h3>
-                  <p class="point-desc">Animated visual progression stepper updating automatically as station operators update ticket states.</p>
+                  <h3 class="point-title">Tiered Service Tabs</h3>
+                  <p class="point-desc">Basic, Premium, and Add-on packages segmented into dedicated tabs so drivers compare options at a glance.</p>
                 </div>
               </li>
               <li class="feature-point-item">
-                <div class="point-icon-tile">🧾</div>
+                <div class="point-icon-tile">⭐</div>
                 <div>
-                  <h3 class="point-title">Digital Service Receipt</h3>
-                  <p class="point-desc">Itemized pricing summary, applied promo discounts, station address, and QR check-in code stored on device.</p>
+                  <h3 class="point-title">Ratings &amp; Duration Upfront</h3>
+                  <p class="point-desc">Each listing shows verified star ratings, review counts, and estimated service duration before booking.</p>
                 </div>
               </li>
               <li class="feature-point-item">
-                <div class="point-icon-tile">🔔</div>
+                <div class="point-icon-tile">⚡</div>
                 <div>
-                  <h3 class="point-title">Actionable Bay Completion Alerts</h3>
-                  <p class="point-desc">Notifies customers the exact moment their vehicle exits the drying bay and is ready for pickup.</p>
+                  <h3 class="point-title">One-Tap Scheduling</h3>
+                  <p class="point-desc">"Schedule" and "View Detail" actions sit directly on each service card, cutting the path from browsing to booking.</p>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">components / OrderStatusTracker.tsx</span>
-              </div>
-              <div class="mockup-body">
-                <div class="ui-visual-container">
-                  <div style="display:flex; flex-direction:column; gap:0.75rem;">
-                    <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.75rem;">
-                      <span style="width:1.25rem; height:1.25rem; border-radius:9999px; background:#10b981; color:#fff; display:grid; place-items:center; font-size:0.65rem;">✓</span>
-                      <div>
-                        <span style="font-weight:600; color:var(--fg);">1. Booking Confirmed</span>
-                        <div style="color:var(--muted); font-size:0.65rem;">Slot reserved at Downtown Bay #3</div>
-                      </div>
-                    </div>
-
-                    <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.75rem;">
-                      <span style="width:1.25rem; height:1.25rem; border-radius:9999px; background:var(--primary); color:var(--primary-fg); display:grid; place-items:center; font-size:0.65rem;">●</span>
-                      <div>
-                        <span style="font-weight:600; color:var(--primary);">2. Washing &amp; Underbody Rinse</span>
-                        <div style="color:var(--muted); font-size:0.65rem;">Estimated completion in 12 mins</div>
-                      </div>
-                    </div>
-
-                    <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.75rem; opacity:0.5;">
-                      <span style="width:1.25rem; height:1.25rem; border-radius:9999px; background:var(--border); color:var(--muted); display:grid; place-items:center; font-size:0.65rem;">3</span>
-                      <div>
-                        <span style="font-weight:600; color:var(--muted);">3. Hand Polish &amp; Pickup Ready</span>
-                        <div style="color:var(--muted-dark); font-size:0.65rem;">Pending wash cycle completion</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/services-premium-detail.png"
+              alt="Station Hub services screen showing Premium Detail packages with ratings, duration, and pricing"
+              style="max-width:260px; width:100%; border-radius:26px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
           </div>
         </div>
 

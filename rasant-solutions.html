@@ -80,7 +80,7 @@
               <span class="text-gradient">Company Admin &amp; HR Suite</span>
             </h1>
             <p class="hero-desc">
-              An end-to-end management platform engineered with Vue 3, Pinia, Django REST Framework, and MySQL. Featuring automated payroll computation, attendance tracking, bi-directional Jira integration, and real-time SSE messaging.
+              A full-stack company management platform combining HR, payroll, attendance, documents, recruitment, messaging, and Jira/worklog tracking into a single role-based admin dashboard — built with Vue 3, Pinia, Tailwind CSS v4, Django REST Framework, and MySQL.
             </p>
 
             <div class="hero-actions">
@@ -109,46 +109,18 @@
             </dl>
           </div>
 
-          <!-- Hero Visual: Multi-ring Glowing Device Preview -->
+          <!-- Hero Visual: Multi-ring Glowing Dashboard Preview -->
           <div class="hero-visual-wrapper">
             <div class="visual-rings-container">
               <div class="ring-inner"></div>
               <div class="ring-outer"></div>
               <div class="ring-glow"></div>
 
-              <div class="visual-mockup-card">
-                <div class="mockup-header">
-                  <span class="mockup-dot dot-red"></span>
-                  <span class="mockup-dot dot-yellow"></span>
-                  <span class="mockup-dot dot-green"></span>
-                  <span class="mockup-title-bar">admin.rasantsolutions.com / live-kpi</span>
-                </div>
-                <div class="mockup-body">
-                  <div class="ui-visual-container">
-                    <div class="metric-pill-row">
-                      <div class="metric-mini-card">
-                        <span class="metric-mini-lbl">Active Staff</span>
-                        <div class="metric-mini-val">142 <span style="font-size:0.75rem; color:#10b981;">● Online</span></div>
-                      </div>
-                      <div class="metric-mini-card">
-                        <span class="metric-mini-lbl">Payroll Cycle</span>
-                        <div class="metric-mini-val" style="color:var(--primary);">100% Processed</div>
-                      </div>
-                    </div>
-
-                    <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.85rem; font-family:var(--font-mono); font-size:0.72rem;">
-                      <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem; color:var(--fg); font-weight:600;">
-                        <span>SSE Channel: #general-announcements</span>
-                        <span style="color:#10b981;">Connected</span>
-                      </div>
-                      <div style="color:var(--muted); line-height:1.4;">
-                        [09:42:15] Shift logs synced via biometric gateway.<br />
-                        [09:44:02] Jira webhook: Sprint-14 status updated.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img
+                src="./assests/screenshots/Rasant-Solution/rasant-dashboard-overview.png"
+                alt="Rasant Solutions admin dashboard overview showing live KPI widgets, headcount, and payroll status"
+                style="width:min(760px, 90vw); display:block; border-radius:20px; box-shadow:0 30px 70px rgba(0,0,0,0.4);"
+              />
             </div>
           </div>
         </div>
@@ -170,14 +142,14 @@
           <div class="cs-card">
             <span class="cs-tag">The Problem</span>
             <p class="cs-problem">
-              Rasant Solutions needed a centralized system to manage core HR and business operations — payroll, attendance, and hiring — which were scattered across manual processes and disconnected tools. Team communication also lacked a real-time solution, slowing down internal coordination and making it hard for leadership to get a clear, live picture of the business.
+              Rasant Solutions needed a centralized system to manage core HR and business operations — payroll, attendance, documents, hiring, credentials, and support inquiries — which were scattered across manual processes and disconnected tools. Team communication also lacked a real-time solution, slowing down internal coordination and making it hard for leadership to get a clear, live picture of the business.
             </p>
           </div>
 
           <div class="cs-card">
             <span class="cs-tag">The Outcome</span>
             <p class="cs-solution">
-              Rasant Solutions now runs payroll, attendance, hiring, and internal communication through a single unified platform. Manual, fragmented workflows were eliminated, replaced with automated payroll calculations, a two-tier leave approval system, a full applicant tracking pipeline, and real-time SSE-powered messaging — giving the team live visibility into HR operations for the first time.
+              Rasant Solutions now runs payroll, attendance, leave, documents, hiring, credential sharing, inquiries, and internal communication through a single unified, role-based platform. Manual, fragmented workflows were eliminated, replaced with an automated increment/payroll engine, a full applicant tracking pipeline, encrypted credential sharing, SSE-powered real-time messaging, and bi-directional Jira/worklog tracking — giving the team live visibility into every part of the business for the first time.
             </p>
           </div>
         </div>
@@ -206,9 +178,9 @@
               <ul class="arch-node-list">
                 <li>Vue 3 Composition API</li>
                 <li>Pinia Global State Store</li>
+                <li>Tailwind CSS v4 Design Tokens</li>
                 <li>Reactive Dynamic Dashboards</li>
-                <li>Modular Component Library</li>
-                <li>JWT Token Interceptors</li>
+                <li>Modular Component &amp; Composable Library</li>
               </ul>
             </div>
 
@@ -234,11 +206,11 @@
                 <h3 class="arch-node-title">Core Services</h3>
               </div>
               <ul class="arch-node-list">
-                <li>Payroll &amp; Tax Calculation Engine</li>
+                <li>Payroll &amp; Increment Policy Engine</li>
                 <li>Attendance &amp; Leave Matrix</li>
                 <li>Applicant Tracking Pipeline</li>
+                <li>Encrypted Credential Vault</li>
                 <li>Audit Logging &amp; Activity Feeds</li>
-                <li>Automated Report Generation</li>
               </ul>
             </div>
 
@@ -268,45 +240,81 @@
           <span class="eyebrow-badge">Platform Modules</span>
           <h2 class="section-title">Integrated Workspace for Every Department</h2>
           <p class="section-desc">
-            Each business function has dedicated, role-tailored views — from executive KPI tracking to department-level payroll and real-time team collaboration.
+            Each business function has dedicated, role-tailored views — from executive KPI tracking to payroll, attendance, documents, hiring, and real-time team collaboration.
           </p>
         </div>
 
         <div class="modules-grid">
-          <a href="#feature-dashboard" class="module-card">
-            <div class="module-icon-box">📊</div>
-            <div class="module-name">Executive Dashboard</div>
-            <div class="module-sub">Live headcount &amp; financial analytics</div>
+          <a href="#feature-hr" class="module-card">
+            <div class="module-icon-box">👥</div>
+            <div class="module-name">HR &amp; Employees</div>
+            <div class="module-sub">Directory, onboarding &amp; profiles</div>
           </a>
 
           <a href="#feature-payroll" class="module-card">
             <div class="module-icon-box">💰</div>
-            <div class="module-name">Payroll Engine</div>
-            <div class="module-sub">Automated salaries, tax &amp; slips</div>
+            <div class="module-name">Payroll &amp; Salaries</div>
+            <div class="module-sub">Increment engine, settings &amp; slips</div>
           </a>
 
           <a href="#feature-attendance" class="module-card">
-            <div class="module-icon-box">⏱️</div>
-            <div class="module-name">Attendance &amp; Leave</div>
-            <div class="module-sub">Biometric sync &amp; leave approvals</div>
+            <div class="module-icon-box">🕒</div>
+            <div class="module-name">Attendance</div>
+            <div class="module-sub">GPS check-in &amp; bulk uploads</div>
+          </a>
+
+          <a href="#feature-leave" class="module-card">
+            <div class="module-icon-box">🌴</div>
+            <div class="module-name">Leave Management</div>
+            <div class="module-sub">Inbox-style approval queue</div>
+          </a>
+
+          <a href="#feature-documents" class="module-card">
+            <div class="module-icon-box">📁</div>
+            <div class="module-name">Documents</div>
+            <div class="module-sub">Shared files &amp; folder manager</div>
+          </a>
+
+          <a href="#feature-recruitment" class="module-card">
+            <div class="module-icon-box">💼</div>
+            <div class="module-name">Careers &amp; Recruitment</div>
+            <div class="module-sub">Job postings &amp; CV pipeline</div>
+          </a>
+
+          <a href="#feature-vault" class="module-card">
+            <div class="module-icon-box">🔐</div>
+            <div class="module-name">Credential Vault</div>
+            <div class="module-sub">Encrypted shared logins</div>
           </a>
 
           <a href="#feature-chat" class="module-card">
             <div class="module-icon-box">💬</div>
-            <div class="module-name">Real-Time SSE Chat</div>
-            <div class="module-sub">Channels, read receipts &amp; caching</div>
+            <div class="module-name">Real-Time Inbox</div>
+            <div class="module-sub">SSE messaging &amp; groups</div>
+          </a>
+
+          <a href="#feature-inquiries" class="module-card">
+            <div class="module-icon-box">📬</div>
+            <div class="module-name">Inquiries</div>
+            <div class="module-sub">Contact-form pipeline</div>
           </a>
 
           <a href="#feature-jira" class="module-card">
-            <div class="module-icon-box">🎯</div>
+            <div class="module-icon-box">🧩</div>
             <div class="module-name">Jira Integration</div>
-            <div class="module-sub">Bi-directional sprint &amp; ticket sync</div>
+            <div class="module-sub">Issues, sprints &amp; subtasks</div>
           </a>
 
-          <a href="#feature-recruitment" class="module-card">
-            <div class="module-icon-box">👥</div>
-            <div class="module-name">Talent Pipeline</div>
-            <div class="module-sub">Applicant tracking &amp; hiring funnel</div>
+          <a href="#feature-worklogs" class="module-card">
+            <div class="module-icon-box">⏱</div>
+            <div class="module-name">Worklogs</div>
+            <div class="module-sub">Manual &amp; Jira-synced time entries</div>
+          </a>
+
+          <a href="#feature-settings" class="module-card">
+            <div class="module-icon-box">⚙️</div>
+            <div class="module-name">Account Settings</div>
+            <div class="module-sub">Profile, password &amp; SMTP</div>
           </a>
         </div>
       </div>
@@ -316,304 +324,534 @@
     <section class="section section-alt" id="features">
       <div class="container">
 
-        <!-- 01 — Executive Dashboard -->
-        <div class="feature-showcase-row" id="feature-dashboard">
+        <!-- 01 — HR & Employee Management -->
+        <div class="feature-showcase-row" id="feature-hr">
           <div class="feature-content">
             <span class="section-number">01</span>
-            <span class="eyebrow-badge">Command Center</span>
-            <h2 class="feature-heading">Real-Time Operations Dashboard</h2>
+            <span class="eyebrow-badge">HR &amp; Employee Management</span>
+            <h2 class="feature-heading">Employee Directory &amp; Onboarding</h2>
             <p class="feature-desc">
-              Consolidates key performance metrics across departments into a unified single-pane interface. Provides instant visibility into workforce presence, monthly payroll commitments, and active operational alerts.
+              A searchable, paginated employee directory with inline employment-status editing, alongside a full onboarding flow — either admin-created or via a shareable multi-step public form covering personal details, emergency contacts, education docs, and bank info with file uploads (CNIC, certificates, degrees).
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔍</div>
+                <div>
+                  <h3 class="point-title">Searchable Directory</h3>
+                  <p class="point-desc">Search, paginate, and inline-edit employment status directly from the employee list.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📝</div>
+                <div>
+                  <h3 class="point-title">Multi-Step Public Onboarding</h3>
+                  <p class="point-desc">Shareable onboarding link collects personal, emergency contact, education, and bank details with document uploads.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔒</div>
+                <div>
+                  <h3 class="point-title">Detail View &amp; Account Security</h3>
+                  <p class="point-desc">Per-employee detail view/edit including password reset, personal info, emergency contacts, and bank details.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-employee-directory.png"
+              alt="Rasant Solutions employee directory with search, pagination, and inline employment-status editing"
+              style="max-width:430px; width:140%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-employee-onboarding.png"
+              alt="Rasant Solutions multi-step public employee onboarding form with document uploads"
+              style="max-width:430px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+          </div>
+        </div>
+
+        <!-- 02 — Payroll & Salaries -->
+        <div class="feature-showcase-row row-reverse" id="feature-payroll">
+          <div class="feature-content">
+            <span class="section-number">02</span>
+            <span class="eyebrow-badge">Payroll &amp; Salaries</span>
+            <h2 class="feature-heading">Increment Policy Engine &amp; Payroll Settings</h2>
+            <p class="feature-desc">
+              An increment policy engine lets admins create policies by amount, cycle, and application mode (auto/manual), assign them to employees, and force-apply or apply-overdue increments — backed by projected salary calculations and configurable payroll settings.
             </p>
             <ul class="feature-points-list">
               <li class="feature-point-item">
                 <div class="point-icon-tile">📈</div>
                 <div>
-                  <h3 class="point-title">Live KPI Widgets</h3>
-                  <p class="point-desc">Real-time counts for present employees, on-leave staff, pending expense approvals, and open job requisitions.</p>
+                  <h3 class="point-title">Increment Policies &amp; Status Tracking</h3>
+                  <p class="point-desc">Create policies, assign them to employees, and track increment status — due today or overdue.</p>
                 </div>
               </li>
               <li class="feature-point-item">
-                <div class="point-icon-tile">🔐</div>
+                <div class="point-icon-tile">⚙️</div>
                 <div>
-                  <h3 class="point-title">Granular Role-Based Access</h3>
-                  <p class="point-desc">Custom navigation views and permissions strictly segmented for Administrators, HR Managers, Finance, and Employees.</p>
+                  <h3 class="point-title">Configurable Payroll Settings</h3>
+                  <p class="point-desc">Grace minutes, paid leave/absence allowances, overtime rate, late-penalty thresholds, and office geofence radius.</p>
                 </div>
               </li>
               <li class="feature-point-item">
-                <div class="point-icon-tile">⚡</div>
+                <div class="point-icon-tile">🧾</div>
                 <div>
-                  <h3 class="point-title">Instant Reactive UI</h3>
-                  <p class="point-desc">Pinia state caching eliminates redundant network requests on frequently accessed administrative views.</p>
+                  <h3 class="point-title">Per-Employee Salary Breakdown</h3>
+                  <p class="point-desc">Base vs. current salary, attendance deductions, late penalties, overtime, bonus, tax, and insurance in one view.</p>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">admin-panel / dashboard.vue</span>
-              </div>
-              <div class="mockup-body">
-                <div class="code-preview">
-<span style="color:var(--primary);">const</span> userStore = useUserStore();
-<span style="color:var(--primary);">const</span> { metrics, activeEmployees } = storeToRefs(dashboardStore);
-
-<span style="color:var(--muted-dark);">// Fetch live operational snapshot on mount</span>
-<span style="color:var(--accent);">await</span> dashboardStore.fetchExecutiveOverview();
-<span style="color:var(--primary);">if</span> (userStore.hasRole(<span style="color:#10b981;">'HR_ADMIN'</span>)) {
-  <span style="color:var(--accent);">await</span> payrollStore.checkPendingDisbursements();
-}
-                </div>
-              </div>
-            </div>
+          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+            <img
+              src="./assests//screenshots/Rasant-Solution/rasant-increment-policy.png"
+              alt="Rasant Solutions increment policy engine with apply-overdue modal and numeric badge"
+              style="max-width:430px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-salary-breakdown.png"
+              alt="Rasant Solutions per-employee salary breakdown with deductions, overtime, bonus, tax and insurance"
+              style="max-width:430px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
           </div>
         </div>
 
-        <!-- 02 — Payroll Engine -->
-        <div class="feature-showcase-row row-reverse" id="feature-payroll">
-          <div class="feature-content">
-            <span class="section-number">02</span>
-            <span class="eyebrow-badge">Finance &amp; Compensation</span>
-            <h2 class="feature-heading">Automated Payroll &amp; Compensation Ledger</h2>
-            <p class="feature-desc">
-              Eliminates manual payroll spreadsheets with an automated calculation engine that computes monthly base pay, tax brackets, overtime hours, deductions, and bonuses in strict database transactions.
-            </p>
-            <ul class="feature-points-list">
-              <li class="feature-point-item">
-                <div class="point-icon-tile">💵</div>
-                <div>
-                  <h3 class="point-title">Automated Tax &amp; Deduction Rules</h3>
-                  <p class="point-desc">Applies dynamic tax brackets, health insurance deductions, and unpaid leave penalties automatically.</p>
-                </div>
-              </li>
-              <li class="feature-point-item">
-                <div class="point-icon-tile">📄</div>
-                <div>
-                  <h3 class="point-title">One-Click Payslip Generation</h3>
-                  <p class="point-desc">Generates verifiable PDF salary slips for staff with detailed itemized earning and deduction breakdowns.</p>
-                </div>
-              </li>
-              <li class="feature-point-item">
-                <div class="point-icon-tile">🛡️</div>
-                <div>
-                  <h3 class="point-title">Immutable Audit Trail</h3>
-                  <p class="point-desc">Maintains locked historical payroll batches in MySQL to guarantee regulatory compliance.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">finance / payroll_service.py</span>
-              </div>
-              <div class="mockup-body">
-                <div class="code-preview">
-<span style="color:var(--primary);">def</span> <span style="color:var(--accent);">calculate_monthly_disbursement</span>(employee_id, cycle_month):
-    <span style="color:var(--primary);">with</span> transaction.atomic():
-        contract = Contract.objects.select_for_update().get(emp_id=employee_id)
-        leaves = LeaveRecord.get_unpaid_days(employee_id, cycle_month)
-        gross = contract.base_salary + contract.allowances
-        deductions = compute_tax(gross) + (contract.daily_rate * leaves)
-        net_pay = gross - deductions
-        <span style="color:var(--primary);">return</span> Payslip.objects.create(net_salary=net_pay, status=<span style="color:#10b981;">'READY'</span>)
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 03 — Attendance & Leave -->
+        <!-- 03 — Attendance -->
         <div class="feature-showcase-row" id="feature-attendance">
           <div class="feature-content">
             <span class="section-number">03</span>
-            <span class="eyebrow-badge">Workforce Logistics</span>
-            <h2 class="feature-heading">Attendance Tracking &amp; Leave Matrix</h2>
+            <span class="eyebrow-badge">Attendance</span>
+            <h2 class="feature-heading">GPS Check-In &amp; Bulk Attendance Upload</h2>
             <p class="feature-desc">
-              Synchronizes daily clock-in/out timestamps, tracks working hours, identifies anomalies, and automates multi-stage manager approval workflows for vacation, sick, and remote days.
+              Daily check-in/check-out tracking with GPS-based in-office/work-from-home detection and map links, plus bulk attendance upload via CSV/XLSX matched to employees by Employee Number, and per-employee history with status and date-range filtering.
             </p>
             <ul class="feature-points-list">
               <li class="feature-point-item">
-                <div class="point-icon-tile">📅</div>
+                <div class="point-icon-tile">📍</div>
                 <div>
-                  <h3 class="point-title">Interactive Calendar Matrix</h3>
-                  <p class="point-desc">Visual month and week scheduling calendar displaying department-wide coverage and scheduled absences.</p>
+                  <h3 class="point-title">GPS-Based Detection</h3>
+                  <p class="point-desc">Automatically classifies check-ins as in-office or work-from-home with direct map links.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📤</div>
+                <div>
+                  <h3 class="point-title">Bulk CSV/XLSX Upload</h3>
+                  <p class="point-desc">SheetJS-based import with strict column allowlisting and per-row atomic savepoints.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🗓️</div>
+                <div>
+                  <h3 class="point-title">Filtered History View</h3>
+                  <p class="point-desc">Inline employee drill-down with status filters and date-range filtering, replacing modal-based detail views.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests//screenshots/Rasant-Solution/rasant-attendance-tracking.png"
+              alt="Rasant Solutions attendance page with bulk CSV upload and per-employee attendance history"
+              style="max-width:530px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+          </div>
+        </div>
+
+        <!-- 04 — Leave Management -->
+        <div class="feature-showcase-row row-reverse" id="feature-leave">
+          <div class="feature-content">
+            <span class="section-number">04</span>
+            <span class="eyebrow-badge">Leave Management</span>
+            <h2 class="feature-heading">Inbox-Style Leave Approval Queue</h2>
+            <p class="feature-desc">
+              A dedicated leave request inbox lets managers filter by pending, approved, rejected, or all requests, approve or reject with optional admin notes, and automatically mark attendance — full day or half day — the moment a request is approved.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📥</div>
+                <div>
+                  <h3 class="point-title">Status-Tabbed Request Queue</h3>
+                  <p class="point-desc">Pending, approved, rejected, and all-requests tabs for quick triage.</p>
                 </div>
               </li>
               <li class="feature-point-item">
                 <div class="point-icon-tile">✅</div>
                 <div>
-                  <h3 class="point-title">Two-Tier Leave Approvals</h3>
-                  <p class="point-desc">Direct line managers review and approve requests before final HR endorsement, updating balances in real time.</p>
+                  <h3 class="point-title">Approve / Reject with Notes</h3>
+                  <p class="point-desc">Optional admin notes recorded alongside every approval or rejection decision.</p>
                 </div>
               </li>
               <li class="feature-point-item">
-                <div class="point-icon-tile">📊</div>
+                <div class="point-icon-tile">🔗</div>
                 <div>
-                  <h3 class="point-title">Overtime &amp; Shift Analytics</h3>
-                  <p class="point-desc">Monitors late check-ins and overtime hours to feed verified data directly into the payroll calculation cycle.</p>
+                  <h3 class="point-title">Auto Attendance Marking</h3>
+                  <p class="point-desc">Approved leave automatically marks the corresponding attendance record as full day or half day.</p>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">attendance / roster-view.vue</span>
-              </div>
-              <div class="mockup-body">
-                <div class="ui-visual-container">
-                  <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--fg); font-weight:600; margin-bottom:0.25rem;">
-                    Daily Shift Roster — Engineering Team
-                  </div>
-                  <div style="display:flex; flex-direction:column; gap:0.5rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); padding:0.6rem 0.8rem; border-radius:6px; border:1px solid var(--border); font-size:0.75rem;">
-                      <span>Ali Hassan (Full-Stack)</span>
-                      <span style="color:#10b981; font-family:var(--font-mono); font-weight:600;">09:02 AM — Present</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); padding:0.6rem 0.8rem; border-radius:6px; border:1px solid var(--border); font-size:0.75rem;">
-                      <span>Sara Khan (UI/UX)</span>
-                      <span style="color:#10b981; font-family:var(--font-mono); font-weight:600;">09:14 AM — Present</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); padding:0.6rem 0.8rem; border-radius:6px; border:1px solid var(--border); font-size:0.75rem;">
-                      <span>Hamza Tariq (Backend)</span>
-                      <span style="color:var(--accent); font-family:var(--font-mono); font-weight:600;">Remote Work (Approved)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-leave-requests.png"
+              alt="Rasant Solutions leave management inbox with pending, approved, and rejected request tabs"
+              style="max-width:530px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
           </div>
         </div>
 
-        <!-- 04 — Real-Time Chat -->
+        <!-- 05 — Documents -->
+        <div class="feature-showcase-row" id="feature-documents">
+          <div class="feature-content">
+            <span class="section-number">05</span>
+            <span class="eyebrow-badge">Documents</span>
+            <h2 class="feature-heading">Shared File &amp; Folder Manager</h2>
+            <p class="feature-desc">
+              A drag-and-drop file and folder manager with grid and list views, inline preview for PDFs, images, video, audio, and text, plus per-document sharing to specific employees and an employee-facing "Shared with me" view.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🗂️</div>
+                <div>
+                  <h3 class="point-title">Drag-and-Drop Uploads</h3>
+                  <p class="point-desc">Create folders, upload, rename, and delete files directly from grid or list views.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">👁️</div>
+                <div>
+                  <h3 class="point-title">Inline Multi-Format Preview</h3>
+                  <p class="point-desc">Preview PDF, image, video, audio, and text files without leaving the page.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔗</div>
+                <div>
+                  <h3 class="point-title">Per-Document Sharing</h3>
+                  <p class="point-desc">Share specific documents to specific employees, surfaced in an employee-facing "Shared with me" view.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-documents-manager.png"
+              alt="Rasant Solutions document manager with grid view, folders, and inline PDF preview"
+              style="max-width:550px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+          </div>
+        </div>
+
+        <!-- 06 — Careers & Recruitment -->
+        <div class="feature-showcase-row row-reverse" id="feature-recruitment">
+          <div class="feature-content">
+            <span class="section-number">06</span>
+            <span class="eyebrow-badge">Careers &amp; Recruitment</span>
+            <h2 class="feature-heading">Job Postings &amp; CV Application Pipeline</h2>
+            <p class="feature-desc">
+              Full job posting CRUD (title, type, department, salary range, description, requirements) with Published/Draft/Closed status, a public unauthenticated careers page, and a CV pipeline with per-job and General Applications buckets, applicant status tracking, in-browser CV preview via pdf.js, and candidate email outreach.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📋</div>
+                <div>
+                  <h3 class="point-title">Job Posting CRUD</h3>
+                  <p class="point-desc">Full create/edit/delete workflow with Published, Draft, and Closed status control.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📄</div>
+                <div>
+                  <h3 class="point-title">In-Browser CV Preview</h3>
+                  <p class="point-desc">pdf.js-powered CV preview alongside applicant status pipeline: New, Reviewed, Shortlisted, Rejected.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📧</div>
+                <div>
+                  <h3 class="point-title">Candidate Email Outreach</h3>
+                  <p class="point-desc">Reach out to candidates directly from the applications panel with built-in email composer.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-careers-jobs.png"
+              alt="Rasant Solutions job postings table with Published, Draft, and Closed status"
+              style="max-width:430px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-cv-applications.png"
+              alt="Rasant Solutions CV applications panel with PDF preview and status dropdown"
+              style="max-width:430px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+          </div>
+        </div>
+
+        <!-- 07 — Credential Vault -->
+        <div class="feature-showcase-row" id="feature-vault">
+          <div class="feature-content">
+            <span class="section-number">07</span>
+            <span class="eyebrow-badge">Credential Vault</span>
+            <h2 class="feature-heading">Encrypted Shared Credential Storage</h2>
+            <p class="feature-desc">
+              Encrypted storage for shared login credentials — site, username, email, password — with strength indicators, plus per-credential sharing to specific employees and the ability to revoke access at any time.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔐</div>
+                <div>
+                  <h3 class="point-title">Encrypted Storage</h3>
+                  <p class="point-desc">Credentials stored encrypted at rest with live password-strength indicators on entry.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🤝</div>
+                <div>
+                  <h3 class="point-title">Per-Credential Sharing</h3>
+                  <p class="point-desc">Share individual credentials to specific employees rather than exposing the whole vault.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🚫</div>
+                <div>
+                  <h3 class="point-title">Revoke Access</h3>
+                  <p class="point-desc">Instantly revoke a previously shared credential's access from any employee.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-credential-vault.png"
+              alt="Rasant Solutions credential vault with encrypted entries and password strength indicators"
+              style="max-width:550px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+          </div>
+        </div>
+
+        <!-- 08 — Real-Time Inbox -->
         <div class="feature-showcase-row row-reverse" id="feature-chat">
           <div class="feature-content">
-            <span class="section-number">04</span>
-            <span class="eyebrow-badge">Internal Communications</span>
-            <h2 class="feature-heading">Real-Time Messaging with SSE</h2>
+            <span class="section-number">08</span>
+            <span class="eyebrow-badge">Real-Time Inbox</span>
+            <h2 class="feature-heading">SSE-Powered Messaging with 1:1 &amp; Group Chats</h2>
             <p class="feature-desc">
-              Engineered a lightweight, persistent messaging system powered by Server-Sent Events (SSE). Delivers instantaneous internal communications across teams with minimal server overhead.
+              A WhatsApp-style messaging system powered by Server-Sent Events, supporting 1:1 and group chats, read receipts, typing/online status, delete-for-me/delete-for-everyone, file/image/video/audio attachments, and group photo &amp; member management.
             </p>
             <ul class="feature-points-list">
               <li class="feature-point-item">
                 <div class="point-icon-tile">📡</div>
                 <div>
-                  <h3 class="point-title">Persistent Low-Latency SSE Stream</h3>
-                  <p class="point-desc">Event stream automatically streams new messages, broadcast announcements, and channel notifications in real time.</p>
+                  <h3 class="point-title">SSE Live Delivery</h3>
+                  <p class="point-desc">Real-time message delivery with automatic reconnection handling after logout/login cycles.</p>
                 </div>
               </li>
               <li class="feature-point-item">
-                <div class="point-icon-tile">💾</div>
+                <div class="point-icon-tile">✅</div>
                 <div>
-                  <h3 class="point-title">Client-Side Message Caching</h3>
-                  <p class="point-desc">Local Pinia and indexed store caches past message history to eliminate channel loading lag upon tab switching.</p>
+                  <h3 class="point-title">Read Receipts &amp; Presence</h3>
+                  <p class="point-desc">Double-tick delivery status, typing indicators, and online/offline presence tracking.</p>
                 </div>
               </li>
               <li class="feature-point-item">
-                <div class="point-icon-tile">📬</div>
+                <div class="point-icon-tile">🗑️</div>
                 <div>
-                  <h3 class="point-title">Unread Badges &amp; Read Receipts</h3>
-                  <p class="point-desc">Real-time unread count indicators with automated delivery confirmation when recipients view channels.</p>
+                  <h3 class="point-title">Context Menu Actions</h3>
+                  <p class="point-desc">Delete-for-me and delete-for-everyone, plus offline message queuing with localStorage persistence.</p>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">services / sse_stream.js</span>
-              </div>
-              <div class="mockup-body">
-                <div class="code-preview">
-<span style="color:var(--primary);">export function</span> <span style="color:var(--accent);">connectChatStream</span>(authToken) {
-  <span style="color:var(--primary);">const</span> eventSource = <span style="color:var(--primary);">new</span> EventSource(<span style="color:#10b981;">`/api/v1/chat/stream/?token=${authToken}`</span>);
-
-  eventSource.addEventListener(<span style="color:#10b981;">'message'</span>, (event) => {
-    <span style="color:var(--primary);">const</span> payload = JSON.parse(event.data);
-    chatStore.appendMessage(payload.channelId, payload.message);
-    chatStore.incrementUnread(payload.channelId);
-  });
-  <span style="color:var(--primary);">return</span> eventSource;
-}
-                </div>
-              </div>
-            </div>
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-inbox-chat.png"
+              alt="Rasant Solutions real-time inbox with 1:1 and group chats, read receipts, and typing status"
+              style="max-width:550px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
           </div>
         </div>
 
-        <!-- 05 — Jira Integration -->
-        <div class="feature-showcase-row" id="feature-jira">
+        <!-- 09 — Inquiries -->
+        <div class="feature-showcase-row" id="feature-inquiries">
           <div class="feature-content">
-            <span class="section-number">05</span>
-            <span class="eyebrow-badge">Developer Workflows</span>
-            <h2 class="feature-heading">Bi-Directional Jira Project Integration</h2>
+            <span class="section-number">09</span>
+            <span class="eyebrow-badge">Inquiries</span>
+            <h2 class="feature-heading">Contact-Form Inbox &amp; Reply Pipeline</h2>
             <p class="feature-desc">
-              Bridges project management with organizational HR by synchronizing Jira tickets, active sprint progress, logged development hours, and milestone completion into the admin panel.
+              A contact-form submission inbox with a status pipeline — New, In Progress, Held, Closed/Resolved — full reply history, and an in-app email-reply composer for responding to inquiries directly from the dashboard.
             </p>
             <ul class="feature-points-list">
               <li class="feature-point-item">
-                <div class="point-icon-tile">🔄</div>
+                <div class="point-icon-tile">📬</div>
                 <div>
-                  <h3 class="point-title">Webhook-Driven Synchronization</h3>
-                  <p class="point-desc">Listens for issue transitions in Jira, updating engineering task boards and sprint burndown charts instantly.</p>
+                  <h3 class="point-title">Status Pipeline</h3>
+                  <p class="point-desc">Track every inquiry through New, In Progress, Held, and Closed/Resolved states.</p>
                 </div>
               </li>
               <li class="feature-point-item">
-                <div class="point-icon-tile">⏱️</div>
+                <div class="point-icon-tile">✉️</div>
                 <div>
-                  <h3 class="point-title">Logged Hours Reconciliation</h3>
-                  <p class="point-desc">Cross-references time logged in Jira against daily clock-in times to verify productivity and project billing.</p>
+                  <h3 class="point-title">In-App Email Composer</h3>
+                  <p class="point-desc">Reply to inquiries directly without leaving the dashboard, with full reply history retained.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🗃️</div>
+                <div>
+                  <h3 class="point-title">Panel-Scoped Scrolling</h3>
+                  <p class="point-desc">Inner-panel-only scrolling layout keeps context visible while browsing long inquiry threads.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-inquiries.png"
+              alt="Rasant Solutions inquiries inbox with status pipeline and email reply composer"
+              style="max-width:550px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+          </div>
+        </div>
+
+        <!-- 10 — Jira Integration -->
+        <div class="feature-showcase-row row-reverse" id="feature-jira">
+          <div class="feature-content">
+            <span class="section-number">10</span>
+            <span class="eyebrow-badge">Jira Integration</span>
+            <h2 class="feature-heading">Connected Jira Cloud Workspace</h2>
+            <p class="feature-desc">
+              Connect a Jira Cloud account (email + API token + domain) to view, create, and delete issues directly from the dashboard — with a tabbed My Issues view across To Do, In Progress, and Done, plus attachments, subtasks, priorities, labels, sprints, and team assignment.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🔗</div>
+                <div>
+                  <h3 class="point-title">One-Time Jira Connection</h3>
+                  <p class="point-desc">Connect once via email, API token, and domain — no per-request re-authentication.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📋</div>
+                <div>
+                  <h3 class="point-title">Tabbed My Issues View</h3>
+                  <p class="point-desc">To Do, In Progress, and Done tabs with live stats for each status.</p>
                 </div>
               </li>
               <li class="feature-point-item">
                 <div class="point-icon-tile">🎯</div>
                 <div>
-                  <h3 class="point-title">Direct Ticket Dispatch</h3>
-                  <p class="point-desc">Managers can assign support issues or maintenance tasks to developers straight from the admin interface.</p>
+                  <h3 class="point-title">Full Issue Management</h3>
+                  <p class="point-desc">Attachments, subtasks, priorities, labels, sprints, and team assignment handled in-app.</p>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div>
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-dot dot-red"></span>
-                <span class="mockup-dot dot-yellow"></span>
-                <span class="mockup-dot dot-green"></span>
-                <span class="mockup-title-bar">integrations / jira_webhook.py</span>
-              </div>
-              <div class="mockup-body">
-                <div class="code-preview">
-<span style="color:var(--primary);">class</span> <span style="color:var(--accent);">JiraWebhookView</span>(APIView):
-    <span style="color:var(--primary);">def</span> post(self, request):
-        event_type = request.data.get(<span style="color:#10b981;">'webhookEvent'</span>)
-        issue_data = request.data.get(<span style="color:#10b981;">'issue'</span>, {})
-        <span style="color:var(--primary);">if</span> event_type == <span style="color:#10b981;">'jira:issue_updated'</span>:
-            TaskSyncService.update_sprint_task(issue_data)
-            broadcast_sse_event(<span style="color:#10b981;">'jira_update'</span>, issue_data)
-        <span style="color:var(--primary);">return</span> Response({<span style="color:#10b981;">"status"</span>: <span style="color:#10b981;">"synced"</span>}, status=200)
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-jira-integration.png"
+              alt="Rasant Solutions Jira integration with tabbed My Issues view across To Do, In Progress, and Done"
+              style="max-width:550px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+          </div>
+        </div>
+
+        <!-- 11 — Worklogs -->
+        <div class="feature-showcase-row" id="feature-worklogs">
+          <div class="feature-content">
+            <span class="section-number">11</span>
+            <span class="eyebrow-badge">Worklogs</span>
+            <h2 class="feature-heading">Manual &amp; Jira-Synced Time Tracking</h2>
+            <p class="feature-desc">
+              Manual and Jira-synced time entries with live duration calculation, monthly grouping via a month picker with pagination, and monthly stats — total hours, issues worked, entries, and days logged.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">⏱️</div>
+                <div>
+                  <h3 class="point-title">Live Duration Calculation</h3>
+                  <p class="point-desc">Time entries compute duration live as they're logged, whether manual or synced from Jira.</p>
                 </div>
-              </div>
-            </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📆</div>
+                <div>
+                  <h3 class="point-title">Monthly Grouping &amp; Stats</h3>
+                  <p class="point-desc">Month picker with pagination surfaces total hours, issues worked, entries, and days logged.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">♻️</div>
+                <div>
+                  <h3 class="point-title">Shared Composable Architecture</h3>
+                  <p class="point-desc">A shared state factory and validation helper eliminate duplication across Add/Edit worklog forms.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-worklogs.png"
+              alt="Rasant Solutions worklogs page with monthly grouping, month picker, and time entry stats"
+              style="max-width:550px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
+          </div>
+        </div>
+
+        <!-- 12 — Account Settings -->
+        <div class="feature-showcase-row row-reverse" id="feature-settings">
+          <div class="feature-content">
+            <span class="section-number">12</span>
+            <span class="eyebrow-badge">Account Settings</span>
+            <h2 class="feature-heading">Profile, Security &amp; SMTP Configuration</h2>
+            <p class="feature-desc">
+              Profile editing with avatar upload and password change for every user, plus an admin-only SMTP/email settings panel covering host, port, SSL/TLS, credentials, from-address, and a built-in test email sender.
+            </p>
+            <ul class="feature-points-list">
+              <li class="feature-point-item">
+                <div class="point-icon-tile">🖼️</div>
+                <div>
+                  <h3 class="point-title">Profile &amp; Avatar</h3>
+                  <p class="point-desc">Editable profile details with avatar upload and secure password change flow.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">📧</div>
+                <div>
+                  <h3 class="point-title">Admin SMTP Configuration</h3>
+                  <p class="point-desc">Host, port, SSL/TLS, credentials, and from-address configurable straight from settings.</p>
+                </div>
+              </li>
+              <li class="feature-point-item">
+                <div class="point-icon-tile">✅</div>
+                <div>
+                  <h3 class="point-title">Built-In Test Email</h3>
+                  <p class="point-desc">Send a test email from the settings panel to verify SMTP configuration before going live.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div style="display:flex; justify-content:center;">
+            <img
+              src="./assests/screenshots/Rasant-Solution/rasant-account-settings.png"
+              alt="Rasant Solutions account settings with profile editing, password change, and admin SMTP configuration"
+              style="max-width:550px; width:100%; border-radius:16px; box-shadow:0 25px 55px rgba(0,0,0,0.3);"
+            />
           </div>
         </div>
 
@@ -639,7 +877,7 @@
               <span class="tech-badge">Pinia Store</span>
               <span class="tech-badge">Composition API</span>
               <span class="tech-badge">JavaScript ES6+</span>
-              <span class="tech-badge">Tailwind CSS</span>
+              <span class="tech-badge">Tailwind CSS v4</span>
               <span class="tech-badge">Axios Interceptors</span>
             </div>
           </div>
@@ -695,26 +933,26 @@
         <div class="challenge-solution-grid">
           <div class="cs-card">
             <span class="cs-tag">01 · Real-Time Communication</span>
-            <p class="cs-problem">Challenge: Traditional polling caused high database load and excessive HTTP handshakes, while full WebSockets added unnecessary infrastructure complexity for one-way alert streaming.</p>
-            <p class="cs-solution">Solution: Implemented Server-Sent Events (SSE) via Django streaming HTTP responses. Created client-side auto-reconnection logic and Pinia message caching for zero-latency updates.</p>
+            <p class="cs-problem">Challenge: Traditional polling caused high database load and excessive HTTP handshakes, while full WebSockets added unnecessary infrastructure complexity for one-way alert streaming. SSE reconnection also failed after logout/login cycles due to component caching.</p>
+            <p class="cs-solution">Solution: Implemented Server-Sent Events via Django streaming HTTP responses, added a `mark_offline` endpoint, fixed `<KeepAlive>` caching of the Inbox component, and built client-side auto-reconnection logic with Pinia message caching for zero-latency updates.</p>
           </div>
 
           <div class="cs-card">
             <span class="cs-tag">02 · Financial Data Integrity</span>
-            <p class="cs-problem">Challenge: Concurrent adjustments to payroll variables (bonuses, leave deductions, tax brackets) risked race conditions and dirty writes during batch disbursement.</p>
-            <p class="cs-solution">Solution: Enforced atomic database transactions (`transaction.atomic()`) with row-level locks on contract tables in MySQL, ensuring calculation consistency before slip generation.</p>
+            <p class="cs-problem">Challenge: Concurrent adjustments to payroll variables (increments, bonuses, leave deductions, tax brackets) risked race conditions and dirty writes during batch disbursement.</p>
+            <p class="cs-solution">Solution: Enforced atomic database transactions with row-level locks on contract tables in MySQL, plus per-row atomic savepoints for bulk attendance uploads, ensuring calculation consistency before slip generation.</p>
           </div>
 
           <div class="cs-card">
             <span class="cs-tag">03 · Cross-Origin &amp; Token Expiration</span>
-            <p class="cs-problem">Challenge: Token expiration during long administrator shifts caused API call drops and data loss in unfinished form submissions.</p>
-            <p class="cs-solution">Solution: Configured Axios response interceptors with automatic JWT silent refresh mechanisms that queue pending requests and replay them seamlessly upon token renewal.</p>
+            <p class="cs-problem">Challenge: Token expiration during long administrator shifts caused API call drops and data loss in unfinished form submissions, including `request.user` resolving as `AnonymousUser` inside SSE streams.</p>
+            <p class="cs-solution">Solution: Configured Axios response interceptors with automatic JWT silent refresh mechanisms that queue pending requests and replay them seamlessly upon token renewal, and fixed authentication context propagation into SSE streams.</p>
           </div>
 
           <div class="cs-card">
-            <span class="cs-tag">04 · Jira Webhook High Volume</span>
-            <p class="cs-problem">Challenge: Bulk sprint updates in Jira sent sudden bursts of webhooks, overwhelming the backend processing thread.</p>
-            <p class="cs-solution">Solution: Built asynchronous webhook ingest endpoints with payload validation and de-duplication, updating cached ticket states before persisting to database.</p>
+            <span class="cs-tag">04 · Async Race Conditions &amp; UI Consistency</span>
+            <p class="cs-problem">Challenge: Rapid CV submission polling and status dropdown interactions risked stale data overwrites, while `overflow-x-auto` tables clipped dropdown z-index.</p>
+            <p class="cs-solution">Solution: Added a `cvRequestId` token guard to prevent race conditions, Teleport-based status dropdowns to escape table clipping, and a reusable `usePagedList()` composable factory across list-heavy modules.</p>
           </div>
         </div>
       </div>
@@ -739,7 +977,7 @@
 
           <div class="benefit-card">
             <h3 class="benefit-title">Frontend Component System</h3>
-            <p class="benefit-desc">Built modular, reusable UI components with Vue 3 Composition API, managing global authentication, permissions, and cached API responses via Pinia.</p>
+            <p class="benefit-desc">Built modular, reusable UI components and composables with Vue 3 Composition API, managing global authentication, permissions, and cached API responses via Pinia.</p>
           </div>
 
           <div class="benefit-card">
@@ -749,17 +987,17 @@
 
           <div class="benefit-card">
             <h3 class="benefit-title">Relational Database Modeling</h3>
-            <p class="benefit-desc">Created normalized SQL schemas for payroll records, employee contracts, attendance logs, and chat messages with index optimization.</p>
+            <p class="benefit-desc">Created normalized SQL schemas for payroll records, employee contracts, attendance logs, documents, credentials, and chat messages with index optimization.</p>
           </div>
 
           <div class="benefit-card">
             <h3 class="benefit-title">Security &amp; Role-Based Access</h3>
-            <p class="benefit-desc">Implemented JWT authentication, route guards, CORS policies, and granular RBAC to restrict access to sensitive financial records.</p>
+            <p class="benefit-desc">Implemented JWT authentication, route guards, CORS policies, encrypted credential storage, and granular RBAC to restrict access to sensitive financial records.</p>
           </div>
 
           <div class="benefit-card">
-            <h3 class="benefit-title">Testing, Debugging &amp; Polish</h3>
-            <p class="benefit-desc">Conducted end-to-end integration testing, streamlined edge cases across payroll rules, and ensured responsive layout consistency across devices.</p>
+            <h3 class="benefit-title">Validation, Testing &amp; Polish</h3>
+            <p class="benefit-desc">Built a centralized validation composable shared across frontend and backend, conducted end-to-end integration testing, and ensured responsive layout consistency across devices.</p>
           </div>
         </div>
       </div>
